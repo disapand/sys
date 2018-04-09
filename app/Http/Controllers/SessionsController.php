@@ -8,9 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
 {
+    public function index() {
+        if (session() -> get('success')) {
+            session() -> forget('success');
+        }
+        return view('welcome');
+    }
+
     public function login(Request $request) {
         $credentials =  $this -> validate($request, [
-           'Num' => 'required',
+            'Num' => 'required',
             'password' => 'required'
         ]);
 

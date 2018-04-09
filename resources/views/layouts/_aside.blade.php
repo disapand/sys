@@ -7,8 +7,8 @@
                 text-color="#fff"
                 unique-opened="true"
                 active-text-color="#ffd04b">
-            <el-menu-item>
-                <img src="{{ asset('logo') }}" alt="">
+            <el-menu-item index="1">
+                <img src="{{ asset('images/logo.png') }}" alt="">
             </el-menu-item>
             <el-menu-item index="1">
                 <i class="el-icon-menu"></i>

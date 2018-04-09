@@ -3,5 +3,6 @@
         <div class="alert alert-{{ $msg }}">
             {{ session() -> get($msg) }}
         </div>
+        {{ session() -> forget($msg) }}
     @endif
 @endforeach

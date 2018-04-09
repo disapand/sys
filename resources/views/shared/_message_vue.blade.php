@@ -8,5 +8,6 @@
             show-icon>
             </el-alert>
         </template>
+        {{ session() -> forget($msg) }}
     @endif
 @endforeach
