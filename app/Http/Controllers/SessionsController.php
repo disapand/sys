@@ -15,6 +15,7 @@ class SessionsController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            session() -> flash('success', '欢迎您'. Auth::user() -> name );
             return view('pages.index', compact(Auth::user()));
         }else {
             session() -> flash('danger', '工号和密码不匹配，请确认后重新登录');
