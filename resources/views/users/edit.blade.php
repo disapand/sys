@@ -11,30 +11,7 @@
                     <span>修改信息</span>
                 </div>
 
-                {{--<form method="post" action="{{ route('updateUesr') }}">
-                    {{ csrf_field() }}
-
-                    <div class="form-group">
-                        <label for="Num" class="col-sm-2 col-form-label">工号</label>
-                        <input type="text" class="form-control" name="Num" placeholder="{{ \Illuminate\Support\Facades\Auth::user() -> Num }}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">用户名</label>
-                        <input type="text" class="form-control" name="name" placeholder="{{ \Illuminate\Support\Facades\Auth::user() -> name }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">原密码</label>
-                        <input type="password" class="form-control" name="password" placeholder="请输入原密码">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">新密码</label>
-                        <input type="password" class="form-control" name="password_new" placeholder="请输入新密码">
-                    </div>
-                    <button type="submit" class="btn btn-primary">确认修改</button>
-                </form>
---}}
-
-                <el-form ref="form" label-width="80px" method="post" action="{{ route('updateUesr')}}">
+                <el-form ref="form" label-width="80px" method="post" action="{{ route('updateUesr',[\Illuminate\Support\Facades\Auth::user()])}}">
                     {{ csrf_field() }}
 
                     <el-form-item label="工号">
@@ -46,15 +23,15 @@
                     </el-form-item>
 
                     <el-form-item label="原密码">
-                        <el-input type="password" placeholder="请输入原密码" name="password"></el-input>
+                        <el-input type="password" placeholder="请输入原密码" name="password" id="password"></el-input>
                     </el-form-item>
 
                     <el-form-item label="新密码">
-                        <el-input type="password" placeholder="请输入新密码" name="password_new"></el-input>
+                        <el-input type="password" placeholder="请输入新密码" name="password_new" id="password_new"></el-input>
                     </el-form-item>
 
                 <el-form-item>
-                    <button class="btn btn-primary" type="submit">提交修改</button>
+                    <button class="btn btn-primary" type="submit" id="submit" disabled>提交修改</button>
                 </el-form-item>
 
                 {{--</el-form>--}}
@@ -66,8 +43,14 @@
 
 @stop
 
-@section('method')
-    submit() {
-        $this.submit()
-    }
+@section('script')
+    <script>
+        $(function () {
+            $('#password_new').blur(function () {
+                if ( !$('#password').val() == '' && !$('#password_new').val() == '' ) {
+                   $('#submit').removeAttr('disabled')
+                }
+            })
+        })
+    </script>
 @stop

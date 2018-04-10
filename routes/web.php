@@ -16,5 +16,6 @@ Route::get('/','SessionsController@index') -> name('index');
 Route::post('/login', 'SessionsController@login') -> name('login');
 
 Route::get('/editUser', 'UsersController@edit') -> name('editUser');
-Route::post('/updateUser', 'UsersController@update') -> name('updateUesr');
+Route::post('/updateUser/{user}', 'UsersController@update') -> name('updateUesr');
 Route::post('/logout', 'UsersController@logout') -> name('logout');
+Route::get('/userList', 'UsersController@list') -> name('userList');

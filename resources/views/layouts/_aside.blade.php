@@ -1,11 +1,11 @@
-<div>
-    <el-col :span="24">
+<div style="height: 100%;width: 100%;">
+    <el-col :span="24" style='height: 100%;'>
         <el-menu
                 class="el-menu-vertical-demo"
-                style="border:none;"
+                style="border:none;height: 100%;"
                 background-color="#545c64"
                 text-color="#fff"
-                unique-opened="true"
+                unique-opened
                 active-text-color="#ffd04b">
             <el-menu-item index="1">
                 <img src="{{ asset('images/logo.png') }}" alt="">
