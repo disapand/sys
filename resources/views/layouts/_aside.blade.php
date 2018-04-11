@@ -2,6 +2,7 @@
     <el-col :span="24" style='height: 100%;'>
         <el-menu
                 class="el-menu-vertical-demo"
+                :default-active="activeIndex"
                 style="border:none;height: 100%;"
                 background-color="#545c64"
                 text-color="#fff"
@@ -19,7 +20,7 @@
                     <i class="el-icon-edit"></i>
                     <span>借款人管理</span>
                 </template>
-                <el-menu-item index="1-1">添加借款人</el-menu-item>
+                <el-menu-item index="1-1" @click="tzlj('{{ route('jkrCreate') }}')">添加借款人</el-menu-item>
                 <el-menu-item index="1-2">借款人列表</el-menu-item>
             </el-submenu>
             <el-submenu index="3">

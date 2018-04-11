@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', '借贷管理系统')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script rel="{{ asset('js/app.js') }}"></script>
@@ -41,16 +42,37 @@
 <script src="{{ asset('js/vue.js') }}"></script>
 <script src="{{ asset('js/elementui.js') }}"></script>--}}
 <script>
+    $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+
     let vm = new Vue({
         el: '#app',
         data: function () {
             return {
                 show: true,
                 usersData: [],
+                activeIndex:'',
+                jbxx: {
+                    name:'',
+                    tel: '',
+                    IDCard: '',
+                },
             }
         },
-        method:{
-                @yield('method')
+        methods:{
+            tzlj(mblj) {
+                $(window).attr('location', mblj);
+            },
+            onSubmitPost(uri, data) {
+                $.post(uri, data, function (msg) {
+                    vm.$message({
+                        showClose: true,
+                        message: msg.dd,
+                        type:msg.statue
+                    })
+                    vm.$refs[data].resetFields()
+                }, 'json')
+            },
+
         },
         computed: {
                 @yield('computed')

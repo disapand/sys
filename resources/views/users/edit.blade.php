@@ -34,7 +34,7 @@
                     <button class="btn btn-primary" type="submit" id="submit" disabled>提交修改</button>
                 </el-form-item>
 
-                {{--</el-form>--}}
+                </el-form>
                 @include('shared._message_vue')
                 @include('shared._errors_vue')
             </el-card>
