@@ -19,6 +19,9 @@ Route::get('/editUser', 'UsersController@edit') -> name('editUser');
 Route::post('/updateUser/{user}', 'UsersController@update') -> name('updateUesr');
 Route::post('/logout', 'UsersController@logout') -> name('logout');
 Route::get('/userList', 'UsersController@list') -> name('userList');
+Route::get('/userAdd', 'UsersController@add') -> name('userAdd');
+Route::post('/userAdd', 'UsersController@store') -> name('userAdd');
+Route::post('/userDelete/{user}', 'UsersController@destroy') -> name('userDelete');
 
 Route::get('/jkrCreate', 'jkrController@create') -> name('jkrCreate');
 Route::post('/jkrCreate', 'jkrController@jbxxStore') -> name('jbxxCreate');

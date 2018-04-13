@@ -14,7 +14,7 @@
             </form>
         </el-menu-item>
     </el-submenu>
-    @if(\Illuminate\Support\Facades\Auth::user()->role === 'admin')
+    @if(\Illuminate\Support\Facades\Auth::user()->role === '管理员')
         <el-menu-item index="2" style="float:right;">
             <a href="{{ route('userList') }}" style="text-decoration: none;display: inline-block">用户管理</a>
         </el-menu-item>

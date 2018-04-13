@@ -6,13 +6,14 @@
             <el-card class="box-card">
                 <div slot="header" class="clearfix">
                     <span>用户列表</span>
+                    <el-button style="float: right; margin-right: 20px; " type="primary" size="mini" @click="tzlj(' {{ route('userAdd') }}')">新增用户</el-button>
                 </div>
                 <template>
                     <el-table
                             :data="usersData"
                             style="width: 100%"
                             stripe
-                            :default-sort = "{prop: 'id', order: 'descending'}">
+                            :default-sort = "{prop: 'Num', order: 'ascending'}">
                         <el-table-column
                                 prop="id"
                                 label="编号"
@@ -39,12 +40,8 @@
                             <template slot-scope="scope">
                                 <el-button
                                         size="mini"
-                                        @click="handleEdit(scope.$index, scope.row)">@{{ scope.row.Num }}
-                                </el-button>
-                                <el-button
-                                        size="mini"
                                         type="danger"
-                                        @click="handleDelete(scope.$index, scope.row)">删除
+                                        @click="onSubmit('{{ url('/userDelete') }}', scope.row.id, 'del')">删除
                                 </el-button>
                             </template>
                         </el-table-column>

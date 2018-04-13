@@ -36,6 +36,7 @@
 </div>
 </body>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+@yield('script')
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 {{--<script src="{{ asset('js/jquery.js') }}"></script>
@@ -56,6 +57,12 @@
                     tel: '',
                     IDCard: '',
                 },
+                user: {
+                  name: '',
+                  Num: '',
+                  role: '',
+                  password: '',
+                },
             }
         },
         methods:{
@@ -69,10 +76,37 @@
                         message: msg.dd,
                         type:msg.statue
                     })
-                    vm.$refs[data].resetFields()
+                    window.location.reload()
                 }, 'json')
             },
+            onSubmit(uri, data, action) {
+                uri = uri + '/' + data
+                //如果是删除则执行
+                if ( action == 'del'){
+                    vm.$confirm('此操作将永久删除信息，是否继续？', '警告', {
+                        confirmButtonText: '确定',
+                        cancelButtonText:'取消',
+                        type: 'warning'
+                    }).then(() => {
+                        $.post(uri, function (msg) {
+                            vm.$message({
+                                showClose: true,
+                                message: msg.dd,
+                                type:msg.statue
+                            })
+                            window.location.reload()
+                        })
+                    }).catch(() =>{
+                        vm.$message({
+                            showClose: true,
+                            type:'info',
+                            message:'取消删除'
+                        })
+                    })
+                } else if(action = 'show') {
 
+                }
+            }
         },
         computed: {
                 @yield('computed')
