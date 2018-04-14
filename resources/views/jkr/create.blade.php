@@ -4,8 +4,8 @@
     @include('shared._errors_vue')
 
     <template>
-        <el-tabs value="first">
-            <el-tab-pane label="基本信息" name="first">
+        <el-tabs v-model="activeTab" @tab-click="handleClick">
+            <el-tab-pane label="基本信息" name="1">
 
                 <el-row :gutter="10">
                     <el-col :span="12" :offset="6">
@@ -18,20 +18,20 @@
                                 {{ csrf_field() }}
 
                                 <el-form-item label="姓名">
-                                    <el-input v-model="jbxx.name"></el-input>
+                                    <el-input v-model="jbxx.name" size="mini"></el-input>
                                 </el-form-item>
 
                                 <el-form-item label="手机号">
-                                    <el-input v-model="jbxx.tel"></el-input>
+                                    <el-input v-model="jbxx.tel" size="mini"></el-input>
                                 </el-form-item>
 
                                 <el-form-item label="身份证号">
-                                    <el-input v-model="jbxx.IDCard"></el-input>
+                                    <el-input v-model="jbxx.IDCard" size="mini"></el-input>
                                 </el-form-item>
 
                                 <el-form-item label="性别">
-                                    <el-radio v-model="jbxx.sex" label="男">男</el-radio>
-                                    <el-radio v-model="jbxx.sex" label="女">女</el-radio>
+                                    <el-radio v-model="jbxx.sex" label="男" size="mini">男</el-radio>
+                                    <el-radio v-model="jbxx.sex" label="女" size="mini">女</el-radio>
                                 </el-form-item>
 
                                 <el-form-item label="借款类别">
@@ -64,9 +64,19 @@
                                     <el-input v-model="jbxx.addr"></el-input>
                                 </el-form-item>
 
-                                <el-form-item>
-                                    <el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">确认提交</el-button>
-                                </el-form-item>
+                                {{--<el-form-item>--}}
+                                    {{--<el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">确认提交</el-button>--}}
+                                    <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
+                                        <el-step title="基本信息"></el-step>
+                                        <el-step title="职业信息"></el-step>
+                                        <el-step title="联系人信息"></el-step>
+                                        <el-step title="其他信息"></el-step>
+                                        <el-step title="附件信息"></el-step>
+                                    </el-steps>
+                                {{--</el-form-item>--}}
+                                <el-row style="margin: 20px 0;">
+                                    <el-button type="primary" @click="next" style="margin: 0 auto;display: block">下一项</el-button>
+                                </el-row>
 
                             </el-form>
                             @include('shared._message_vue')
@@ -76,7 +86,7 @@
                 </el-row>
             </el-tab-pane>
 
-            <el-tab-pane label="职业信息" name="second">
+            <el-tab-pane label="职业信息" name="2">
                 <el-row :gutter="10">
                     <el-col :span="12" :offset="6">
                         <el-card class="box-card">
@@ -131,9 +141,19 @@
                                     <el-input v-model="zyxx.zsr"></el-input>
                                 </el-form-item>
 
-                                <el-form-item>
-                                    <el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">确认提交</el-button>
-                                </el-form-item>
+                                    <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
+                                        <el-step title="基本信息"></el-step>
+                                        <el-step title="职业信息"></el-step>
+                                        <el-step title="联系人信息"></el-step>
+                                        <el-step title="其他信息"></el-step>
+                                        <el-step title="附件信息"></el-step>
+                                    </el-steps>
+                                    <el-row style="margin: 20px 0;">
+                                        <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
+                                            <el-button type="primary" @click="preview" style>上一项</el-button>
+                                            <el-button type="primary" @click="next">下一项</el-button>
+                                        </div>
+                                    </el-row>
 
                             </el-form>
                             @include('shared._message_vue')
@@ -143,7 +163,7 @@
                 </el-row>
             </el-tab-pane>
 
-            <el-tab-pane label="联系人信息" name="third">
+            <el-tab-pane label="联系人信息" name="3">
                 <el-row :gutter="10">
                     <el-col :span="12" :offset="6">
                         <el-card class="box-card">
@@ -180,9 +200,20 @@
                                     <el-radio v-model="lxrxx.dk" label="否">否</el-radio>
                                 </el-form-item>
 
-                                <el-form-item>
-                                    <el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">确认提交</el-button>
-                                </el-form-item>
+                                <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
+                                    <el-step title="基本信息"></el-step>
+                                    <el-step title="职业信息"></el-step>
+                                    <el-step title="联系人信息"></el-step>
+                                    <el-step title="其他信息"></el-step>
+                                    <el-step title="附件信息"></el-step>
+                                </el-steps>
+                                <el-row style="margin: 20px 0;">
+                                    <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
+                                        <el-button type="primary" @click="preview">上一项</el-button>
+                                        <el-button type="primary" @click="next">下一项</el-button>
+                                    </div>
+                                </el-row>
+
 
                             </el-form>
                             @include('shared._message_vue')
@@ -193,7 +224,7 @@
             </el-tab-pane>
 
 
-            <el-tab-pane label="其他信息" name="fourth">
+            <el-tab-pane label="其他信息" name="4">
                 <el-row :gutter="10">
                     <el-col :span="12" :offset="6">
                         <el-card class="box-card">
@@ -228,9 +259,19 @@
                                     <el-input v-model="qtxx.gmdz"></el-input>
                                 </el-form-item>
 
-                                <el-form-item>
-                                    <el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">确认提交</el-button>
-                                </el-form-item>
+                                <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
+                                    <el-step title="基本信息"></el-step>
+                                    <el-step title="职业信息"></el-step>
+                                    <el-step title="联系人信息"></el-step>
+                                    <el-step title="其他信息"></el-step>
+                                    <el-step title="附件信息"></el-step>
+                                </el-steps>
+                                <el-row style="margin: 20px 0;">
+                                    <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
+                                        <el-button type="primary" @click="preview">上一项</el-button>
+                                        <el-button type="primary" @click="next">下一项</el-button>
+                                    </div>
+                                </el-row>
 
                             </el-form>
                             @include('shared._message_vue')
@@ -241,7 +282,7 @@
             </el-tab-pane>
 
 
-            <el-tab-pane label="附件信息" name="fifth">
+            <el-tab-pane label="附件信息" name="5">
                 <el-row :gutter="10">
                     <el-col :span="12" :offset="6">
                         <el-card class="box-card">
@@ -256,10 +297,10 @@
                                     <el-upload
                                             class="upload-demo"
                                             action="https://jsonplaceholder.typicode.com/posts/"
-                                            :on-preview="handlePreview"
                                             ref="upload"
-                                            :on-remove="handleRemove"
-                                            :file-list="fileList2"
+                                            {{--:on-preview="handlePreview"--}}
+                                            {{--:on-remove="handleRemove"--}}
+                                            {{--:file-list="fileList2"--}}
                                             list-type="picture"
                                             :auto-upload="false">
                                         <el-button size="small" type="primary">点击添加</el-button>
@@ -271,10 +312,10 @@
                                     <el-upload
                                             class="upload-demo"
                                             action="https://jsonplaceholder.typicode.com/posts/"
-                                            :on-preview="handlePreview"
                                             ref="upload"
+                                            {{--:on-preview="handlePreview"
                                             :on-remove="handleRemove"
-                                            :file-list="fileList2"
+                                            :file-list="fileList2"--}}
                                             list-type="picture"
                                             :auto-upload="false">
                                         <el-button size="small" type="primary">点击添加</el-button>
@@ -285,10 +326,10 @@
                                     <el-upload
                                             class="upload-demo"
                                             action="https://jsonplaceholder.typicode.com/posts/"
-                                            :on-preview="handlePreview"
+                                            {{--:on-preview="handlePreview"--}}
                                             ref="upload"
-                                            :on-remove="handleRemove"
-                                            :file-list="fileList2"
+                                            {{--:on-remove="handleRemove"--}}
+                                            {{--:file-list="fileList2"--}}
                                             list-type="picture"
                                             :auto-upload="false">
                                         <el-button size="small" type="primary">点击添加</el-button>
@@ -300,10 +341,10 @@
                                     <el-upload
                                             class="upload-demo"
                                             action="https://jsonplaceholder.typicode.com/posts/"
-                                            :on-preview="handlePreview"
                                             ref="upload"
-                                            :on-remove="handleRemove"
-                                            :file-list="fileList2"
+                                            {{--:on-preview="handlePreview"--}}
+                                            {{--:on-remove="handleRemove"--}}
+                                            {{--:file-list="fileList2"--}}
                                             list-type="picture"
                                             :auto-upload="false">
                                         <el-button size="small" type="primary">点击添加</el-button>
@@ -311,9 +352,19 @@
                                     </el-upload>
                                 </el-form-item>
 
-                                <el-form-item>
-                                    <el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">点击上传</el-button>
-                                </el-form-item>
+                                <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
+                                    <el-step title="基本信息"></el-step>
+                                    <el-step title="职业信息"></el-step>
+                                    <el-step title="联系人信息"></el-step>
+                                    <el-step title="其他信息"></el-step>
+                                    <el-step title="附件信息"></el-step>
+                                </el-steps>
+                                <el-row style="margin: 20px 0;">
+                                    <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
+                                        <el-button type="primary" @click="preview">上一项</el-button>
+                                        <el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">点击上传</el-button>
+                                    </div>
+                                </el-row>
 
                             </el-form>
                             @include('shared._message_vue')

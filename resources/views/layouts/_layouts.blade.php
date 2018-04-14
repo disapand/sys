@@ -52,6 +52,8 @@
                 show: true,
                 usersData: [],
                 activeIndex:'',
+                activeStep: 0,
+                activeTab: '1',
                 jbxx: {
                     name:'',
                     tel: '',
@@ -140,6 +142,25 @@
                 } else if(action = 'show') {
 
                 }
+            },
+            next(){
+                if(vm.activeStep ++ > 3) {
+                    vm.activeTab = '1'
+                    vm.activeStep = 0
+                }else{
+                    vm.activeTab = vm.activeStep + 1 + ''
+                }
+            },
+            preview(){
+                if (vm.activeStep -- < 0) {
+                    vm.activeTab = '5'
+                    vm.activeStep = 4
+                }else {
+                    vm.activeTab = vm.activeStep + 1 + ''
+                }
+            },
+            handleClick(tab, event){
+                vm.activeStep = tab.name - 1
             }
         },
         computed: {
