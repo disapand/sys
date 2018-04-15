@@ -54,6 +54,7 @@
                 activeIndex:'',
                 activeStep: 0,
                 activeTab: '1',
+                show:false,
                 jbxx: {
                     name:'',
                     tel: '',
@@ -63,8 +64,6 @@
                     xl:'',
                     hj:'',
                     addr:'',
-                },
-                zyxx: {
                     gzdw:'',
                     dwxz:'',
                     sshy:'',
@@ -75,23 +74,52 @@
                     dwdh:'',
                     rzxs:'',
                     zsr:'',
-                },
-                lxrxx: {
                     name:'',
                     gx:'',
                     lxdh:'',
                     sfzh:'',
                     dk:'',
-                },
-                qtxx: {
                     fclb:'',
                     gmsj:'',
                     gmjg:'',
                     gmfs:'',
                     gmdz:'',
+                    fjxx:[],
                 },
-                fjxx: {
-
+                jbxxRules: {
+                    name:[
+                        {required: true, message:'请输入姓名', trigger:'blur'}
+                    ],
+                    tel:[
+                        {required: true, message:'请输入电话', trigger:'blur'}
+                    ],
+                    IDCard:[
+                        {required: true, message:'请输入身份证号', trigger:'blur'}
+                    ],
+                    sex:[
+                        {required: true, message:'请输入性别', trigger:'change'}
+                    ],
+                    jklb:[
+                        {required: true, message:'请选择借款类别', trigger:'change'}
+                    ],
+                    addr:[
+                        {required: true, message:'请输入住宅地址', trigger:'blur'}
+                    ],
+                    rzsj:[
+                        {required: true, message:'请选择入职时间', trigger:'change'}
+                    ],
+                    dwdz:[
+                        {required: true, message:'请输入单位地址', trigger:'blur'}
+                    ],
+                    dwdh:[
+                        {required: true, message:'请输入单位电话', trigger:'blur'}
+                    ],
+                    rzxs:[
+                        {required: true, message:'请输入任职薪水', trigger:'blur'}
+                    ],
+                    zsr:[
+                        {required: true, message:'请输入总收入', trigger:'blur'}
+                    ],
                 },
                 user: {
                   name: '',
@@ -99,22 +127,55 @@
                   role: '',
                   password: '',
                 },
+                userRules:{
+                    name: [
+                        { required: true, message:'请输入姓名', trigger: 'blur' }
+                    ],
+                    Num: [
+                        { required: true, message:'请输入工号', trigger: 'blur' }
+                    ],
+                    role: [
+                        { required: true, message:'请选择账号类型', trigger: 'change' }
+                    ],
+                    password: [
+                        { required: true, message:'请输入密码', trigger: 'blur' }
+                    ],
+                }
             }
         },
         methods:{
+            //vue跳转链接的方法，参数为要跳转的目标地址
             tzlj(mblj) {
                 $(window).attr('location', mblj);
             },
-            onSubmitPost(uri, data) {
-                $.post(uri, data, function (msg) {
-                    vm.$message({
-                        showClose: true,
-                        message: msg.dd,
-                        type:msg.statue
-                    })
-                    window.location.reload()
-                }, 'json')
+
+            //ajax提交post请求的方法
+            onSubmitPost(uri, data, tmp) {
+                vm.$refs[tmp].validate( (valid) => {
+                    if (valid){
+                        $.post(uri, data, function (msg, textStatus, jqXHR) {
+                            vm.$message({
+                                showClose: true,
+                                message: msg.dd,
+                                type:msg.statue
+                            })
+                            vm.$refs[tmp].resetFields()
+                            if (tmp == 'jbxx') {
+                                {{--window.location.href({{ route('jkrList') }})--}}
+                            }
+                        }, 'json')
+                    } else {
+                        vm.$message({
+                            showClose: true,
+                            message: '请填写完整信息',
+                            type: 'error'
+                        })
+                        return false
+                    }
+                })
             },
+
+            //
             onSubmit(uri, data, action) {
                 uri = uri + '/' + data
                 //如果是删除则执行
@@ -143,6 +204,8 @@
 
                 }
             },
+
+            //步骤条点击下一步，tab跟着跳转的方法
             next(){
                 if(vm.activeStep ++ > 3) {
                     vm.activeTab = '1'
@@ -151,6 +214,8 @@
                     vm.activeTab = vm.activeStep + 1 + ''
                 }
             },
+
+            //步骤条点击上一步，tab跟着跳转的方法
             preview(){
                 if (vm.activeStep -- < 0) {
                     vm.activeTab = '5'
@@ -159,9 +224,31 @@
                     vm.activeTab = vm.activeStep + 1 + ''
                 }
             },
+
+            //tab切换，同步步骤条的方法
             handleClick(tab, event){
                 vm.activeStep = tab.name - 1
-            }
+            },
+            bfUpload(file){
+
+            },
+
+            //上传图片的方法
+            uploadSubmit(){
+                vm.$refs.img.submit()
+            },
+            //图片上传成功的回调方法
+            imgUploadSuccess(response, file, fileList){
+                vm.activeStep = 5
+                $('#jbxxSubmit').removeAttr('disabled').removeClass('is-disabled')
+                vm.jbxx.fjxx.push(response.dd)
+            },
+            uploadSubmit(){
+                vm.$refs.img.submit()
+            },
+            imgUploadError(response, file, fileList){
+                // vm.$message(response.status)
+            },
         },
         computed: {
                 @yield('computed')
