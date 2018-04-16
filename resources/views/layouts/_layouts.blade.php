@@ -154,6 +154,7 @@
                 vm.$refs[tmp].validate( (valid) => {
                     if (valid){
                         $.post(uri, data, function (msg, textStatus, jqXHR) {
+                            console.log(msg)
                             vm.$message({
                                 showClose: true,
                                 message: msg.dd,
