@@ -20,11 +20,11 @@ class CreateZyxxesTable extends Migration
             $table->string('sshy') -> nullable();
             $table->string('rzbm') -> nullable();
             $table->string('zw') -> nullable();
-            $table->string('rzsj');
-            $table->string('dwdz');
-            $table->string('dwdh');
-            $table->string('rzxs');
-            $table->string('zsr');
+            $table->string('rzsj') -> nullable();
+            $table->string('dwdz') -> nullable();
+            $table->string('dwdh') -> nullable();
+            $table->string('rzxs') -> nullable();
+            $table->string('zsr') -> nullable();
             $table->timestamps();
         });
     }

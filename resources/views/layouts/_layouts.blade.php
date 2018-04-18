@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', '借贷管理系统')</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script rel="{{ asset('js/app.js') }}"></script>
+    <script rel="{{ asset('/js/app.js') }}"></script>
 
     {{--引入element-ui--}}
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     {{--<link rel="stylesheet" href="{{ asset('css/elementui.css') }}">--}}
     <style>
         .el-header {
@@ -51,6 +51,7 @@
             return {
                 show: true,
                 usersData: [],
+                jkr:[],
                 activeIndex:'',
                 activeStep: 0,
                 activeTab: '1',
@@ -91,10 +92,12 @@
                         {required: true, message:'请输入姓名', trigger:'blur'}
                     ],
                     tel:[
-                        {required: true, message:'请输入电话', trigger:'blur'}
+                        {required: true, message:'请输入电话号码', trigger:'blur'},
+                        {min: 11, max:11, message:'请输入正确的电话号码', trigger:'blur'}
                     ],
                     IDCard:[
-                        {required: true, message:'请输入身份证号', trigger:'blur'}
+                        {required: true, message:'请输入身份证号', trigger:'blur'},
+                        {min: 18, max:18, message:'请输入正确的身份证号', trigger:'blur'}
                     ],
                     sex:[
                         {required: true, message:'请输入性别', trigger:'change'}
@@ -105,7 +108,7 @@
                     addr:[
                         {required: true, message:'请输入住宅地址', trigger:'blur'}
                     ],
-                    rzsj:[
+/*                    rzsj:[
                         {required: true, message:'请选择入职时间', trigger:'change'}
                     ],
                     dwdz:[
@@ -116,10 +119,16 @@
                     ],
                     rzxs:[
                         {required: true, message:'请输入任职薪水', trigger:'blur'}
-                    ],
+                    ],*/
                     zsr:[
                         {required: true, message:'请输入总收入', trigger:'blur'}
                     ],
+                    lxdh:[
+                        {min: 11, max:11, message:'请输入正确的电话号码', trigger:'blur'}
+                    ],
+                    sfzh:[
+                        {min: 18, max:18, message:'请输入正确的身份证号', trigger:'blur'}
+                    ]
                 },
                 user: {
                   name: '',
@@ -202,7 +211,7 @@
                         })
                     })
                 } else if(action = 'show') {
-
+                    window.location.href = uri
                 }
             },
 
@@ -248,8 +257,15 @@
                 vm.$refs.img.submit()
             },
             imgUploadError(response, file, fileList){
-                // vm.$message(response.status)
+                vm.$message(response)
             },
+            tableRowClassName({row, rowIndex}){
+                if (row.jbxx_zt == '审核不通过' || row.zyxx_zt == '审核不通过' || row.lxrxx_zt == '审核不通过' || row.qtxx_zt == '审核不通过' || row.fjxx_zt == '审核不通过' )  {
+                    return 'warning-row'
+                }else if(row.jbxx_zt == '审核通过' && row.zyxx_zt == '审核通过' && row.lxrxx_zt == '审核通过' && row.qtxx_zt == '审核通过' && row.fjxx_zt == '审核通过'){
+                    return 'success-row'
+                }
+            }
         },
         computed: {
                 @yield('computed')

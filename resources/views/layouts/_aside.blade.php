@@ -21,7 +21,7 @@
                     <span>借款人管理</span>
                 </template>
                 <el-menu-item index="1-1" @click="tzlj('{{ route('jkrCreate') }}')">添加借款人</el-menu-item>
-                <el-menu-item index="1-2">借款人列表</el-menu-item>
+                <el-menu-item index="1-2" @click="tzlj('{{ route('jkrList') }}')">借款人列表</el-menu-item>
             </el-submenu>
             <el-submenu index="3">
                 <template slot="title">

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\fjxx;
 use App\Models\jbxx;
+use App\Models\lxrxx;
+use App\Models\qtxx;
+use App\Models\zyxx;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class jkrController extends Controller
 {
@@ -12,7 +17,7 @@ class jkrController extends Controller
         return view('jkr.create');
     }
 
-    public function jbxxStore(Request $request) {
+    public function jbxxStore( Request $request) {
 
         if ($request->hasFile('fjxx')) {
             $file = $request->file('fjxx');
@@ -23,15 +28,17 @@ class jkrController extends Controller
             return response() -> json(['statue' => 'success', 'dd' => $baseDir . $newFileName ]);
         }
 
-        if (isset($request->name) && isset($request->tel) && isset($request->IDCard) && isset($request->sex) && isset($request->jklb) && isset($request->addr) &&
-            isset($request->rzsj) && isset($request->dwdz) && isset($request->dwdh) && isset($request->rzxs) &&isset($request->zsr)) {
+        if (isset($request->name) && isset($request->tel) && isset($request->IDCard) && isset($request->sex) && isset($request->jklb) && isset($request->addr)
+//            && isset($request->rzsj) && isset($request->dwdz) && isset($request->dwdh) && isset($request->rzxs) &&isset($request->zsr)
+        ) {
             $fjxx_tostring = '';
             if (count($request -> fjxx) == 1) {
-                $fjxx_tostring = $request -> fjxx[0];
+                $fjxx_tostring = '[' +  $request -> fjxx[0] + ']';
             } else {
                 $fjxx_tostring = implode(',', $request -> fjxx);
             }
-            jbxx::with(['zyxx','lxrxx', 'qtxx', 'fjxx']) -> create([
+
+            $tmp = jbxx::create([
                 'name' => $request -> name,
                 'tel' => $request -> tel,
                 'IDCard' => $request -> IDCard,
@@ -40,6 +47,9 @@ class jkrController extends Controller
                 'hj' => $request -> hj,
                 'addr' => $request -> addr,
                 'xl' => $request -> xl,
+                ]);
+            zyxx::create([
+                'jbxx_id' => $tmp -> id,
                 'gzdw' => $request -> gzdw,
                 'dwxz' => $request -> dwdz,
                 'sshy' => $request -> sshy,
@@ -50,22 +60,44 @@ class jkrController extends Controller
                 'dwdh' => $request -> dwdh,
                 'rzxs' => $request -> rzxs,
                 'zsr' => $request -> zsr,
+            ]);
+            lxrxx::create([
+                'jbxx_id' => $tmp -> id,
                 'lxr' => $request -> lxr,
                 'gx' => $request -> gx,
                 'lxdh' => $request -> lxdh,
                 'sfzh' => $request -> sfzh,
                 'dk' => $request -> dk,
+            ]);
+            qtxx::create([
+                'jbxx_id' => $tmp -> id,
                 'fclb' => $request -> fclb,
                 'gmsj' => $request -> gmsj,
                 'gmjg' => $request -> gmjg,
                 'gmfs' => $request -> gmfs,
                 'gmdz' => $request -> gmdz,
+            ]);
+            fjxx::create([
+                'jbxx_id' => $tmp -> id,
+                'tjr' => Auth::user() -> id,
                 'fjxx' => $fjxx_tostring,
             ]);
-            return response() -> json(['statue' => 'success', 'dd' => '添加信息成功']);
+            return response() -> json(['statue' => 'success', 'dd' => Auth::user() -> name]);
         }else {
             return response() -> json(['statue' => 'error', 'dd' => jbxx::all()]);
 //            return response() -> json(['statue' => 'error', 'dd' => '请填写完整的信息']);
         }
     }
+
+    public function list() {
+        $jkrs = jbxx::all();
+
+        return view('jkr.list', compact('jkrs'));
+    }
+
+    public function show(jbxx $jbxx) {
+        return view('jkr.show', compact('jbxx'));
+//        return response() -> json($jbxx -> fjxx -> jbxx_zt);
+    }
+
 }

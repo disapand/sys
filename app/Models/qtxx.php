@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class qtxx extends Model
 {
     protected $fillable = [
-        'fclb', 'gmsj','gmjg','gmfs','gmdz',
+        'jbxx_id','fclb', 'gmsj','gmjg','gmfs','gmdz',
     ];
 
     public function jbxx() {

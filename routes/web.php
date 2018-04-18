@@ -25,3 +25,5 @@ Route::post('/userDelete/{user}', 'UsersController@destroy') -> name('userDelete
 
 Route::get('/jkrCreate', 'jkrController@create') -> name('jkrCreate');
 Route::post('/jkrCreate', 'jkrController@jbxxStore') -> name('jbxxCreate');
+Route::get('/jkrlist', 'jkrController@list') -> name('jkrList');
+Route::get('/jkrShow/{jbxx}', 'jkrController@show') -> name('jkrShow');

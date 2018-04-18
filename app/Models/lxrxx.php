@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class lxrxx extends Model
 {
     protected $fillable = [
-        'lxr', 'gx','lxdh','sfzh','dk'
+        'jbxx_id','lxr', 'gx','lxdh','sfzh','dk'
     ];
 
     public function jbxx() {

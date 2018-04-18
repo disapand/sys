@@ -2,7 +2,6 @@
 
 @section('content')
     @include('shared._errors_vue')
-
     <template>
         <el-tabs v-model="activeTab" @tab-click="handleClick">
             <el-tab-pane label="基本信息" name="1">
@@ -30,8 +29,10 @@
                                 </el-form-item>
 
                                 <el-form-item label="性别" prop="sex">
-                                    <el-radio v-model="jbxx.sex" label="男">男</el-radio>
-                                    <el-radio v-model="jbxx.sex" label="女">女</el-radio>
+                                   <el-radio-group v-model="jbxx.sex">
+                                       <el-radio label="男"></el-radio>
+                                       <el-radio label="女"></el-radio>
+                                   </el-radio-group>
                                 </el-form-item>
 
                                 <el-form-item label="借款类别" prop="jklb">
@@ -65,14 +66,14 @@
                                 </el-form-item>
 
                                 {{--<el-form-item>--}}
-                                    {{--<el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">确认提交</el-button>--}}
-                                    <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
-                                        <el-step title="基本信息"></el-step>
-                                        <el-step title="职业信息"></el-step>
-                                        <el-step title="联系人信息"></el-step>
-                                        <el-step title="其他信息"></el-step>
-                                        <el-step title="附件信息"></el-step>
-                                    </el-steps>
+                                {{--<el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">确认提交</el-button>--}}
+                                <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
+                                    <el-step title="基本信息"></el-step>
+                                    <el-step title="职业信息"></el-step>
+                                    <el-step title="联系人信息"></el-step>
+                                    <el-step title="其他信息"></el-step>
+                                    <el-step title="附件信息"></el-step>
+                                </el-steps>
                                 {{--</el-form-item>--}}
                                 <el-row style="margin: 20px 0;">
                                     <el-button type="primary" @click="next" style="margin: 0 auto;display: block">下一项</el-button>
@@ -142,19 +143,19 @@
                                     <el-input v-model="jbxx.zsr"></el-input>
                                 </el-form-item>
 
-                                    <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
-                                        <el-step title="基本信息"></el-step>
-                                        <el-step title="职业信息"></el-step>
-                                        <el-step title="联系人信息"></el-step>
-                                        <el-step title="其他信息"></el-step>
-                                        <el-step title="附件信息"></el-step>
-                                    </el-steps>
-                                    <el-row style="margin: 20px 0;">
-                                        <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
-                                            <el-button type="primary" @click="preview" style>上一项</el-button>
-                                            <el-button type="primary" @click="next">下一项</el-button>
-                                        </div>
-                                    </el-row>
+                                <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
+                                    <el-step title="基本信息"></el-step>
+                                    <el-step title="职业信息"></el-step>
+                                    <el-step title="联系人信息"></el-step>
+                                    <el-step title="其他信息"></el-step>
+                                    <el-step title="附件信息"></el-step>
+                                </el-steps>
+                                <el-row style="margin: 20px 0;">
+                                    <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
+                                        <el-button type="primary" @click="preview" style>上一项</el-button>
+                                        <el-button type="primary" @click="next">下一项</el-button>
+                                    </div>
+                                </el-row>
 
                             </el-form>
                             @include('shared._message_vue')
@@ -301,20 +302,20 @@
                                 </div>
 
                                 <el-row style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
-                                        <el-upload
-                                                action="{{ route('jbxxCreate') }}"
-                                                :before-upload="bfUpload"
-                                                name="fjxx"
-                                                ref="img"
-                                                drag
-                                                multiple
-                                                :on-success="imgUploadSuccess"
-                                                :on-error="imgUploadError"
-                                                :auto-upload="false"
-                                                list-type="picture">
-                                            <i class="el-icon-upload"></i>
-                                            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-                                        </el-upload>
+                                    <el-upload
+                                            action="{{ route('jbxxCreate') }}"
+                                            :before-upload="bfUpload"
+                                            name="fjxx"
+                                            ref="img"
+                                            drag
+                                            multiple
+                                            :on-success="imgUploadSuccess"
+                                            :on-error="imgUploadError"
+                                            :auto-upload="false"
+                                            list-type="picture">
+                                        <i class="el-icon-upload"></i>
+                                        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                                    </el-upload>
                                 </el-row>
 
                                 <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
@@ -342,13 +343,45 @@
             </el-tab-pane>
         </el-tabs>
     </template>
-
-
-
     @stop
 
 @section('script_vue')
 
-    vm.activeIndex = '1-1'
+    vm.activeIndex = '1-2'
+
+    vm.jbxx.name= '{{ urldecode($jbxx -> name) }}'
+    vm.jbxx.tel= '{{ $jbxx -> tel }}'
+    vm.jbxx.IDCard= '{{ $jbxx -> IDCard }}'
+    vm.jbxx.sex= '{{ urldecode( $jbxx -> sex ) }}'
+    vm.jbxx.jklb= '{{ urldecode($jbxx -> jklb) }}'
+    vm.jbxx.xl= '{{ urldecode($jbxx -> xl) }}'
+    vm.jbxx.hj= '{{ urldecode($jbxx -> hj) }}'
+    vm.jbxx.addr= '{{ urldecode($jbxx -> addr) }}'
+    vm.jbxx.gzdw= '{{ urldecode($jbxx ->zyxx -> gzwd) }}',
+    vm.jbxx.dwxz= '{{ urldecode($jbxx ->zyxx -> dwxz) }}',
+    vm.jbxx.sshy= '{{ urldecode($jbxx ->zyxx -> sshy) }}',
+    vm.jbxx.rzsj= '{{ urldecode($jbxx ->zyxx -> rzsj) }}',
+    vm.jbxx.dwdz= '{{ urldecode($jbxx ->zyxx -> dwdz) }}',
+    vm.jbxx.dwdh= '{{ urldecode($jbxx ->zyxx -> dwdh) }}',
+    vm.jbxx.rzxs= '{{ urldecode($jbxx ->zyxx -> rzxs) }}',
+    vm.jbxx.zsr= '{{ urldecode($jbxx ->zyxx -> zsr) }}',
+    vm.jbxx.lxr= '{{ urldecode($jbxx ->lxrxx -> lxr) }}',
+    vm.jbxx.gx= '{{ urldecode($jbxx ->lxrxx -> gx) }}',
+    vm.jbxx.lxdh= '{{ urldecode($jbxx ->lxrxx -> lxdh) }}',
+    vm.jbxx.sfzh= '{{ urldecode($jbxx ->lxrxx -> sfzh) }}',
+    vm.jbxx.dk= '{{ urldecode($jbxx ->lxrxx -> dk) }}',
+    vm.jbxx.fclb= '{{ urldecode($jbxx ->qtxx -> fclb) }}',
+    vm.jbxx.gmsj= '{{ urldecode($jbxx ->qtxx -> gmsj) }}',
+    vm.jbxx.gmjg= '{{ urldecode($jbxx ->qtxx -> gmjg) }}',
+    vm.jbxx.gmfs= '{{ urldecode($jbxx ->qtxx -> gmfs) }}',
+    vm.jbxx.gmdz= '{{ urldecode($jbxx ->qtxx -> gmdz) }}',
+    vm.jbxx.fclb= '{{ urldecode($jbxx ->qtxx -> fclb) }}',
+    vm.jbxx.fjxx = '{{ $jbxx -> fjxx -> fjxx }}'
+
+    {{--vm.jbxx.name= {{ $jbxx -> name }}--}}
+    {{--vm.jbxx.name= {{ $jbxx -> name }}--}}
+    {{--vm.jbxx.name= {{ $jbxx -> name }}--}}
+    {{--vm.jbxx.name= {{ $jbxx -> name }}--}}
+
 
 @stop

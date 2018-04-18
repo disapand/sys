@@ -16,37 +16,37 @@ class CreateFjxxesTable extends Migration
         Schema::create('fjxxes', function (Blueprint $table) {
             $table->integer('jbxx_id');
             $table->string('fjxx') -> nullable();
-            $table->integer('tjr');
+            $table->integer('tjr')->nullable();
 
             //基本信息审核相关字段
-            $table->boolean('jbxx_zt')->default(false);
-            $table->string('jbxx_yj');
-            $table->integer('jbxxshr');
-            $table->string('jbxxshsj');
+            $table->string('jbxx_zt')->default('待审核');
+            $table->string('jbxx_yj')->nullable();
+            $table->integer('jbxxshr')->nullable();
+            $table->string('jbxxshsj')->nullable();
 
             //职业信息审核相关字段
-            $table->boolean('zyxx_zt')->default(false);
-            $table->string('zyxx_yj');
-            $table->integer('zyxxshr');
-            $table->string('zyxxshsj');
+            $table->string('zyxx_zt')->default('待审核');
+            $table->string('zyxx_yj')->nullable();
+            $table->integer('zyxxshr')->nullable();
+            $table->string('zyxxshsj')->nullable();
 
             //联系人信息审核相关字段
-            $table->boolean('lxrxx_zt')->default(false);
-            $table->string('lxrxx_yj');
-            $table->integer('lxrxxshr');
-            $table->string('lxrxxshsj');
+            $table->string('lxrxx_zt')->default('待审核');
+            $table->string('lxrxx_yj')->nullable();
+            $table->integer('lxrxxshr')->nullable();
+            $table->string('lxrxxshsj')->nullable();
 
             //其他信息审核相关字段
-            $table->boolean('qtxx_zt')->default(false);
-            $table->string('qtxx_yj');
-            $table->integer('qtxxshr');
-            $table->string('qtxxshsj');
+            $table->string('qtxx_zt')->default('待审核');
+            $table->string('qtxx_yj')->nullable();
+            $table->integer('qtxxshr')->nullable();
+            $table->string('qtxxshsj')->nullable();
 
             //附加信息审核相关字段
-            $table->boolean('fjxx_zt')->default(false);
-            $table->string('fjxx_yj');
-            $table->integer('fjxxshr');
-            $table->string('fjxxshsj');
+            $table->string('fjxx_zt')->default('待审核');
+            $table->string('fjxx_yj')->nullable();
+            $table->integer('fjxxshr')->nullable();
+            $table->string('fjxxshsj')->nullable();
 
             $table->timestamps();
         });
