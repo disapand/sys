@@ -25,7 +25,7 @@ class jkrController extends Controller
             $fileExt = $file -> getClientOriginalExtension();
             $newFileName = md5(time()) . random_int(5, 5) . '.' . $fileExt;
             $file -> move($baseDir, $newFileName);
-            return response() -> json(['statue' => 'success', 'dd' => $baseDir . $newFileName ]);
+            return response() -> json(['statue' => 'success', 'dd' =>'/' .  $baseDir . $newFileName ]);
         }
 
         if (isset($request->name) && isset($request->tel) && isset($request->IDCard) && isset($request->sex) && isset($request->jklb) && isset($request->addr)
@@ -33,8 +33,8 @@ class jkrController extends Controller
         ) {
             $fjxx_tostring = '';
             if (count($request -> fjxx) == 1) {
-                $fjxx_tostring = '[' +  $request -> fjxx[0] + ']';
-            } else {
+                $fjxx_tostring = $request -> fjxx[0];
+            } else if (isset($request -> fjxx)){
                 $fjxx_tostring = implode(',', $request -> fjxx);
             }
 
@@ -51,7 +51,7 @@ class jkrController extends Controller
             zyxx::create([
                 'jbxx_id' => $tmp -> id,
                 'gzdw' => $request -> gzdw,
-                'dwxz' => $request -> dwdz,
+                'dwxz' => $request -> dwxz,
                 'sshy' => $request -> sshy,
                 'rzbm' => $request -> rzbm,
                 'zw' => $request -> zw,
@@ -82,10 +82,10 @@ class jkrController extends Controller
                 'tjr' => Auth::user() -> id,
                 'fjxx' => $fjxx_tostring,
             ]);
-            return response() -> json(['statue' => 'success', 'dd' => Auth::user() -> name]);
+            return response() -> json(['statue' => 'success', 'dd' => '信息添加成功，请前往借款人列表查看']);
         }else {
-            return response() -> json(['statue' => 'error', 'dd' => jbxx::all()]);
-//            return response() -> json(['statue' => 'error', 'dd' => '请填写完整的信息']);
+//            return response() -> json(['statue' => 'error', 'dd' => jbxx::all()]);
+            return response() -> json(['statue' => 'error', 'dd' => '请填写完整的信息']);
         }
     }
 
@@ -96,8 +96,87 @@ class jkrController extends Controller
     }
 
     public function show(jbxx $jbxx) {
-        return view('jkr.show', compact('jbxx'));
-//        return response() -> json($jbxx -> fjxx -> jbxx_zt);
+
+        $img_lists = $jbxx -> fjxx -> fjxx;
+        $img_lists = explode(',', $img_lists);
+
+        return view('jkr.show', compact('jbxx', 'img_lists'));
+//        return response() -> json($img_list);
+    }
+
+    public function update(jbxx $jbxx, Request $request){
+
+        $fjxx_tostring = '';
+        if (count($request -> fjxx) == 1) {
+            $fjxx_tostring = $request -> fjxx[0];
+        } else if (isset($request -> fjxx)) {
+            $fjxx_tostring = implode(',', $request -> fjxx);
+        }
+
+        $jbxx -> name = $request -> name;
+        $jbxx -> IDCard = $request -> IDCard;
+        $jbxx -> tel = $request -> tel;
+        $jbxx -> sex = $request -> sex;
+        $jbxx -> jklb = $request -> jklb;
+        $jbxx -> xl = $request -> xl;
+        $jbxx -> hj = $request -> hj;
+        $jbxx -> addr = $request -> addr;
+
+        $zyxx = zyxx::where('jbxx_id', $jbxx -> id) -> first();
+        $zyxx -> gzdw = $request -> gzdw;
+        $zyxx -> dwxz = $request -> dwxz;
+        $zyxx -> sshy = $request -> sshy;
+        $zyxx -> rzbm = $request -> rzbm;
+        $zyxx -> zw = $request -> zw;
+        $zyxx -> rzsj = $request -> rzsj;
+        $zyxx -> dwdz = $request -> dwdz;
+        $zyxx -> dwdh = $request -> dwdh;
+        $zyxx -> rzxs = $request -> rzxs;
+        $zyxx -> zsr = $request -> zsr;
+
+        $lxrxx = lxrxx::where('jbxx_id', $jbxx -> id) -> first();
+        $lxrxx -> lxr = $request -> lxr;
+        $lxrxx -> gx = $request -> gx;
+        $lxrxx -> lxdh = $request -> lxdh;
+        $lxrxx -> sfzh = $request -> sfzh;
+        $lxrxx -> dk = $request -> dk;
+
+        $qtxx = qtxx::where('jbxx_id', $jbxx -> id) -> first();
+        $qtxx -> fclb = $request -> fclb;
+        $qtxx -> gmsj = $request -> gmsj;
+        $qtxx -> gmjg = $request -> gmjg;
+        $qtxx -> gmfs = $request -> gmfs;
+        $qtxx -> gmdz = $request -> gmdz;
+
+        $fjxx = fjxx::where('jbxx_id', $jbxx -> id) -> first();
+        $fjxx -> fjxx = $fjxx_tostring;
+
+        $jbxx -> save();
+        $zyxx -> save();
+        $lxrxx -> save();
+        $qtxx -> save();
+        $fjxx -> save();
+        return response() -> json(['statue' => 'success', 'dd' => '信息更新成功，请刷新页面查看' ]);
+    }
+
+    public function query($condition = '', $queryString = '') {
+
+        $jkrs = [];
+        if ( $queryString == '' ) {
+            $jbxxs = jbxx::all();
+        }else {
+            if ($condition != '借款人姓名') {
+                $jbxxs = jbxx::where( 'id', $queryString) -> get();
+            } else {
+                $jbxxs = jbxx::where('name' , 'like' ,'%'.$queryString.'%') -> get();
+            }
+        }
+
+        foreach ($jbxxs as $jbxx) {
+            array_push($jkrs ,array_merge($jbxx -> toArray(), $jbxx->fjxx -> toArray(),$jbxx->zyxx -> toArray(),$jbxx->lxrxx -> toArray(),$jbxx->qtxx -> toArray()));
+        }
+
+        return response() -> json($jkrs);
     }
 
 }

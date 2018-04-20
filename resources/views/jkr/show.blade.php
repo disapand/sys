@@ -318,6 +318,24 @@
                                     </el-upload>
                                 </el-row>
 
+                                <el-row :gutter="10">
+                                    @foreach($img_lists as $img_list)
+                                        <el-col :span="12" style="margin-top: 20px;margin-bottom: 20px;">
+                                            <el-card :body-style="{ padding: '0px' }">
+                                                <img src="{{ $img_list }}" alt="" style="width:100%;display: block;">
+                                            </el-card>
+                                        </el-col>
+                                    @endforeach
+                                </el-row>
+
+                                <el-alert
+                                        center
+                                        show-icon
+                                        :closable="false"
+                                        title="图片暂时无法部分修改，如果图片需要修改，请上传所有正确的图片"
+                                        type="warning">
+                                </el-alert>
+
                                 <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
                                     <el-step title="基本信息"></el-step>
                                     <el-step title="职业信息"></el-step>
@@ -330,7 +348,7 @@
                                     <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
                                         <el-button type="primary" @click="preview">上一项</el-button>
                                         <el-button type="primary" @click="uploadSubmit">上传图片</el-button>
-                                        <el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx, 'jbxx' )" disabled id="jbxxSubmit" >提交信息</el-button>
+                                        <el-button type="primary" @click="onSubmitPost('{{ url('/jkrUpdate/'. $jbxx -> id) }}', jbxx, 'jbxx' )">更新信息</el-button>
                                     </div>
                                 </el-row>
 
@@ -357,7 +375,7 @@
     vm.jbxx.xl= '{{ urldecode($jbxx -> xl) }}'
     vm.jbxx.hj= '{{ urldecode($jbxx -> hj) }}'
     vm.jbxx.addr= '{{ urldecode($jbxx -> addr) }}'
-    vm.jbxx.gzdw= '{{ urldecode($jbxx ->zyxx -> gzwd) }}',
+    vm.jbxx.gzdw= '{{ urldecode($jbxx ->zyxx -> gzdw) }}',
     vm.jbxx.dwxz= '{{ urldecode($jbxx ->zyxx -> dwxz) }}',
     vm.jbxx.sshy= '{{ urldecode($jbxx ->zyxx -> sshy) }}',
     vm.jbxx.rzsj= '{{ urldecode($jbxx ->zyxx -> rzsj) }}',
@@ -375,13 +393,6 @@
     vm.jbxx.gmjg= '{{ urldecode($jbxx ->qtxx -> gmjg) }}',
     vm.jbxx.gmfs= '{{ urldecode($jbxx ->qtxx -> gmfs) }}',
     vm.jbxx.gmdz= '{{ urldecode($jbxx ->qtxx -> gmdz) }}',
-    vm.jbxx.fclb= '{{ urldecode($jbxx ->qtxx -> fclb) }}',
-    vm.jbxx.fjxx = '{{ $jbxx -> fjxx -> fjxx }}'
-
-    {{--vm.jbxx.name= {{ $jbxx -> name }}--}}
-    {{--vm.jbxx.name= {{ $jbxx -> name }}--}}
-    {{--vm.jbxx.name= {{ $jbxx -> name }}--}}
-    {{--vm.jbxx.name= {{ $jbxx -> name }}--}}
-
+    vm.jbxx.fclb= '{{ urldecode($jbxx ->qtxx -> fclb) }}'
 
 @stop

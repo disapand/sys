@@ -317,6 +317,14 @@
                                         </el-upload>
                                 </el-row>
 
+                                <el-alert
+                                        center
+                                        show-icon
+                                        :closable="false"
+                                        title="请选择好要上传的图片后，点击下方上传图片按钮，然后再点击提交信息按钮"
+                                        type="warning">
+                                </el-alert>
+
                                 <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
                                     <el-step title="基本信息"></el-step>
                                     <el-step title="职业信息"></el-step>

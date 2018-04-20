@@ -14,7 +14,8 @@ class CreateQtxxesTable extends Migration
     public function up()
     {
         Schema::create('qtxxes', function (Blueprint $table) {
-            $table->increments('jbxx_id');
+            $table->increments('id');
+            $table->integer('jbxx_id') -> index();
             $table->string('fclb') -> nullable();
             $table->string('gmsj') -> nullable();
             $table->string('gmjg') -> nullable();

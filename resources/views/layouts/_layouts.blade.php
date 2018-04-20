@@ -56,6 +56,8 @@
                 activeStep: 0,
                 activeTab: '1',
                 show:false,
+                query_string:'',
+                query_condition: '借款人编号',
                 jbxx: {
                     name:'',
                     tel: '',
@@ -265,8 +267,15 @@
                 }else if(row.jbxx_zt == '审核通过' && row.zyxx_zt == '审核通过' && row.lxrxx_zt == '审核通过' && row.qtxx_zt == '审核通过' && row.fjxx_zt == '审核通过'){
                     return 'success-row'
                 }
-            }
+            },
+            query_jkr(){
+                $.get( "{{ url('/jkrQuery')}}" + "/" +  vm.query_condition + "/queryString/" + vm.query_string, function (data, statue) {
+                    vm.jkr = data
+                    console.log(data)
+                })
+            },
         },
+
         computed: {
                 @yield('computed')
         }

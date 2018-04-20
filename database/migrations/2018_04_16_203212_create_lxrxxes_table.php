@@ -14,7 +14,8 @@ class CreateLxrxxesTable extends Migration
     public function up()
     {
         Schema::create('lxrxxes', function (Blueprint $table) {
-            $table->integer('jbxx_id');
+            $table->increments('id');
+            $table->integer('jbxx_id') -> index();
             $table->string('lxr') -> nullable();
             $table->string('gx') -> nullable();
             $table->string('lxdh') -> nullable();

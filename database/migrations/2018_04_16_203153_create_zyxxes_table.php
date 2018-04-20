@@ -14,7 +14,8 @@ class CreateZyxxesTable extends Migration
     public function up()
     {
         Schema::create('zyxxes', function (Blueprint $table) {
-            $table->integer('jbxx_id');
+            $table->increments('id');
+            $table->integer('jbxx_id') -> index();
             $table->string('gzdw') -> nullable();
             $table->string('dwxz') -> nullable();
             $table->string('sshy') -> nullable();

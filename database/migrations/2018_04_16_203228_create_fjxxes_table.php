@@ -14,7 +14,8 @@ class CreateFjxxesTable extends Migration
     public function up()
     {
         Schema::create('fjxxes', function (Blueprint $table) {
-            $table->integer('jbxx_id');
+            $table->increments('id');
+            $table->integer('jbxx_id') -> index();
             $table->string('fjxx') -> nullable();
             $table->integer('tjr')->nullable();
 

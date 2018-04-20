@@ -13,6 +13,16 @@
 @section('content')
     @include('shared._errors_vue')
 
+    <div style="margin: 15px auto; width: 50%">
+        <el-input placeholder="请输入内容" v-model="query_string" class="input-with-select">
+            <el-select v-model="query_condition" slot="prepend" placeholder="请选择" style="width: 130px;">
+                <el-option label="借款人姓名" value="借款人姓名"></el-option>
+                <el-option label="借款人编号" value="借款人编号"></el-option>
+            </el-select>
+            <el-button slot="append" icon="el-icon-search" @click="query_jkr">搜索</el-button>
+        </el-input>
+    </div>
+
     <template>
         <el-row :gutter="10">
             <el-table
@@ -66,11 +76,11 @@
                         width="100">
                 </el-table-column>
                 <el-table-column
-                        prop="tjsj"
+                        prop="created_at"
                         label="添加时间">
                 </el-table-column>
                 <el-table-column
-                        prop="xgsj"
+                        prop="updated_at"
                         label="修改时间">
                 </el-table-column>
                 <el-table-column label="操作">
@@ -91,9 +101,10 @@
 @section('script_vue')
 
     vm.activeIndex = '1-2'
+
     @foreach($jkrs as $jkr)
         vm.jkr.push({id: '{{ $jkr -> id }}', name: '{{ $jkr -> name }}',jklb: '{{ $jkr -> jklb }}',addr: '{{ $jkr -> addr }}',jbxx_zt: '{{ $jkr -> fjxx-> jbxx_zt }}',zyxx_zt: '{{ $jkr -> fjxx-> zyxx_zt }}',
-        lxrxx_zt: '{{ $jkr -> fjxx-> lxrxx_zt }}',qtxx_zt: '{{ $jkr -> fjxx-> qtxx_zt }}',fjxx_zt: '{{ $jkr -> fjxx-> fjxx_zt }}',tjsj: '{{ $jkr -> created_at }}',xgsj: '{{ $jkr -> updated_at }}'})
+        lxrxx_zt: '{{ $jkr -> fjxx-> lxrxx_zt }}',qtxx_zt: '{{ $jkr -> fjxx-> qtxx_zt }}',fjxx_zt: '{{ $jkr -> fjxx-> fjxx_zt }}',created_at: '{{ $jkr -> created_at }}',updated_at: '{{ $jkr -> updated_at }}'})
     @endforeach
 
 @stop
