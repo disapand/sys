@@ -13,7 +13,11 @@
                                 <span>基本信息</span>
                             </div>
 
-                            <el-form ref="jbxx" label-width="100px" :model="jbxx" size="mini" :rules="jbxxRules">
+                            <el-form ref="jbxx" label-width="100px" :model="jbxx" size="mini" :rules="jbxxRules"
+                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                    disabled
+                                @endif
+                            >
                                 {{ csrf_field() }}
 
                                 <el-form-item label="姓名" prop="name">
@@ -95,7 +99,11 @@
                                 <span>职业信息</span>
                             </div>
 
-                            <el-form ref="jbxx" label-width="100px" :model="jbxx" size="mini" :rules="jbxxRules">
+                            <el-form ref="jbxx" label-width="100px" :model="jbxx" size="mini" :rules="jbxxRules"
+                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                    disabled
+                                @endif
+                            >
                                 {{ csrf_field() }}
 
                                 <el-form-item label="工作单位">
@@ -173,7 +181,11 @@
                                 <span>联系人信息</span>
                             </div>
 
-                            <el-form ref="jbxx" label-width="180px" :model="jbxx" size="mini" :rules="jbxxRules">
+                            <el-form ref="jbxx" label-width="180px" :model="jbxx" size="mini" :rules="jbxxRules"
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                     disabled
+                                    @endif
+                            >
                                 {{ csrf_field() }}
 
                                 <el-form-item label="联系人姓名">
@@ -234,7 +246,11 @@
                                 <span>其他信息</span>
                             </div>
 
-                            <el-form ref="jbxx" label-width="130px" :model="jbxx" size="mini" :rules="jbxxRules">
+                            <el-form ref="jbxx" label-width="130px" :model="jbxx" size="mini" :rules="jbxxRules"
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                     disabled
+                                    @endif
+                            >
                                 {{ csrf_field() }}
 
                                 <el-form-item label="房产类别">
@@ -293,7 +309,11 @@
                                 <span>附件信息</span>
                             </div>
 
-                            <el-form ref="jbxx" label-width="130px" :model="jbxx" size="mini">
+                            <el-form ref="jbxx" label-width="130px" :model="jbxx" size="mini"
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                     disabled
+                                    @endif
+                            >
                                 {{ csrf_field() }}
 
                                 <div style="font-size: 14px; text-align: center;margin-bottom: 10px;">
