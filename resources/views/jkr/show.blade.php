@@ -14,9 +14,9 @@
                             </div>
 
                             <el-form ref="jbxx" label-width="100px" :model="jbxx" size="mini" :rules="jbxxRules"
-                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
-                                    disabled
-                                @endif
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                     disabled
+                                    @endif
                             >
                                 {{ csrf_field() }}
 
@@ -33,10 +33,10 @@
                                 </el-form-item>
 
                                 <el-form-item label="性别" prop="sex">
-                                   <el-radio-group v-model="jbxx.sex">
-                                       <el-radio label="男"></el-radio>
-                                       <el-radio label="女"></el-radio>
-                                   </el-radio-group>
+                                    <el-radio-group v-model="jbxx.sex">
+                                        <el-radio label="男"></el-radio>
+                                        <el-radio label="女"></el-radio>
+                                    </el-radio-group>
                                 </el-form-item>
 
                                 <el-form-item label="借款类别" prop="jklb">
@@ -69,21 +69,39 @@
                                     <el-input v-model="jbxx.addr"></el-input>
                                 </el-form-item>
 
-                                {{--<el-form-item>--}}
-                                {{--<el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">确认提交</el-button>--}}
-                                <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
-                                    <el-step title="基本信息"></el-step>
-                                    <el-step title="职业信息"></el-step>
-                                    <el-step title="联系人信息"></el-step>
-                                    <el-step title="其他信息"></el-step>
-                                    <el-step title="附件信息"></el-step>
-                                </el-steps>
-                                {{--</el-form-item>--}}
-                                <el-row style="margin: 20px 0;">
-                                    <el-button type="primary" @click="next" style="margin: 0 auto;display: block">下一项</el-button>
-                                </el-row>
+                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员')
+                                    <el-steps :active="activeStep" finish-status="success" align-center
+                                              style="margin: 20px 0;">
+                                        <el-step title="基本信息"></el-step>
+                                        <el-step title="职业信息"></el-step>
+                                        <el-step title="联系人信息"></el-step>
+                                        <el-step title="其他信息"></el-step>
+                                        <el-step title="附件信息"></el-step>
+                                    </el-steps>
+                                    <el-row style="margin: 20px 0;">
+                                        <el-button type="primary" @click="next" style="margin: 0 auto;display: block">
+                                            下一项
+                                        </el-button>
+                                    </el-row>
+                                @endif
 
                             </el-form>
+                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '管理员')
+                                <el-row>
+                                    <el-col :span="22" :offset="1">
+                                        <el-input type="textarea" v-model="sh.shyj" placeholder="请输入审核意见" :rows="5"></el-input>
+                                    </el-col>
+                                </el-row>
+
+                                <el-row>
+                                    <el-col>
+                                        <el-button-group style="margin-left: 50%; transform: translateX(-50%); margin-top: 20px; margin-bottom: 20px;">
+                                            <el-button type="danger" icon="el-icon-error" @click="tjsh('jbxx','审核不通过')" >审核不通过</el-button>
+                                            <el-button type="primary" icon="el-icon-success" @click="tjsh('jbxx','审核通过')" >审核通过</el-button>
+                                        </el-button-group>
+                                    </el-col>
+                                </el-row>
+                            @endif
                             @include('shared._message_vue')
                             @include('shared._errors_vue')
                         </el-card>
@@ -100,9 +118,9 @@
                             </div>
 
                             <el-form ref="jbxx" label-width="100px" :model="jbxx" size="mini" :rules="jbxxRules"
-                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
-                                    disabled
-                                @endif
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                     disabled
+                                    @endif
                             >
                                 {{ csrf_field() }}
 
@@ -151,21 +169,42 @@
                                     <el-input v-model="jbxx.zsr"></el-input>
                                 </el-form-item>
 
-                                <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
-                                    <el-step title="基本信息"></el-step>
-                                    <el-step title="职业信息"></el-step>
-                                    <el-step title="联系人信息"></el-step>
-                                    <el-step title="其他信息"></el-step>
-                                    <el-step title="附件信息"></el-step>
-                                </el-steps>
-                                <el-row style="margin: 20px 0;">
-                                    <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
-                                        <el-button type="primary" @click="preview" style>上一项</el-button>
-                                        <el-button type="primary" @click="next">下一项</el-button>
-                                    </div>
-                                </el-row>
+                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员')
+                                    <el-steps :active="activeStep" finish-status="success" align-center
+                                              style="margin: 20px 0;">
+                                        <el-step title="基本信息"></el-step>
+                                        <el-step title="职业信息"></el-step>
+                                        <el-step title="联系人信息"></el-step>
+                                        <el-step title="其他信息"></el-step>
+                                        <el-step title="附件信息"></el-step>
+                                    </el-steps>
+                                    <el-row style="margin: 20px 0;">
+                                        <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
+                                            <el-button type="primary" @click="preview" style>上一项</el-button>
+                                            <el-button type="primary" @click="next">下一项</el-button>
+                                        </div>
+                                    </el-row>
+                                @endif
 
                             </el-form>
+
+                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '管理员')
+                                <el-row>
+                                    <el-col :span="22" :offset="1">
+                                        <el-input type="textarea" v-model="sh.shyj" placeholder="请输入审核意见" :rows="5"></el-input>
+                                    </el-col>
+                                </el-row>
+
+                                <el-row>
+                                    <el-col>
+                                        <el-button-group style="margin-left: 50%; transform: translateX(-50%); margin-top: 20px; margin-bottom: 20px;">
+                                            <el-button type="danger" icon="el-icon-error" @click="tjsh('zyxx','审核不通过')" >审核不通过</el-button>
+                                            <el-button type="primary" icon="el-icon-success" @click="tjsh('zyxx','审核通过')" >审核通过</el-button>
+                                        </el-button-group>
+                                    </el-col>
+                                </el-row>
+                            @endif
+
                             @include('shared._message_vue')
                             @include('shared._errors_vue')
                         </el-card>
@@ -214,22 +253,42 @@
                                     <el-radio v-model="jbxx.dk" label="否">否</el-radio>
                                 </el-form-item>
 
-                                <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
-                                    <el-step title="基本信息"></el-step>
-                                    <el-step title="职业信息"></el-step>
-                                    <el-step title="联系人信息"></el-step>
-                                    <el-step title="其他信息"></el-step>
-                                    <el-step title="附件信息"></el-step>
-                                </el-steps>
-                                <el-row style="margin: 20px 0;">
-                                    <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
-                                        <el-button type="primary" @click="preview">上一项</el-button>
-                                        <el-button type="primary" @click="next">下一项</el-button>
-                                    </div>
-                                </el-row>
-
+                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员')
+                                    <el-steps :active="activeStep" finish-status="success" align-center
+                                              style="margin: 20px 0;">
+                                        <el-step title="基本信息"></el-step>
+                                        <el-step title="职业信息"></el-step>
+                                        <el-step title="联系人信息"></el-step>
+                                        <el-step title="其他信息"></el-step>
+                                        <el-step title="附件信息"></el-step>
+                                    </el-steps>
+                                    <el-row style="margin: 20px 0;">
+                                        <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
+                                            <el-button type="primary" @click="preview">上一项</el-button>
+                                            <el-button type="primary" @click="next">下一项</el-button>
+                                        </div>
+                                    </el-row>
+                                @endif
 
                             </el-form>
+
+                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '管理员')
+                                <el-row>
+                                    <el-col :span="22" :offset="1">
+                                        <el-input type="textarea" v-model="sh.shyj" placeholder="请输入审核意见" :rows="5"></el-input>
+                                    </el-col>
+                                </el-row>
+
+                                <el-row>
+                                    <el-col>
+                                        <el-button-group style="margin-left: 50%; transform: translateX(-50%); margin-top: 20px; margin-bottom: 20px;">
+                                            <el-button type="danger" icon="el-icon-error" @click="tjsh('lxrxx','审核不通过')" >审核不通过</el-button>
+                                            <el-button type="primary" icon="el-icon-success" @click="tjsh('lxrxx','审核通过')" >审核通过</el-button>
+                                        </el-button-group>
+                                    </el-col>
+                                </el-row>
+                            @endif
+
                             @include('shared._message_vue')
                             @include('shared._errors_vue')
                         </el-card>
@@ -278,21 +337,42 @@
                                     <el-input v-model="jbxx.gmdz"></el-input>
                                 </el-form-item>
 
-                                <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
-                                    <el-step title="基本信息"></el-step>
-                                    <el-step title="职业信息"></el-step>
-                                    <el-step title="联系人信息"></el-step>
-                                    <el-step title="其他信息"></el-step>
-                                    <el-step title="附件信息"></el-step>
-                                </el-steps>
-                                <el-row style="margin: 20px 0;">
-                                    <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
-                                        <el-button type="primary" @click="preview">上一项</el-button>
-                                        <el-button type="primary" @click="next">下一项</el-button>
-                                    </div>
-                                </el-row>
+                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员')
+                                    <el-steps :active="activeStep" finish-status="success" align-center
+                                              style="margin: 20px 0;">
+                                        <el-step title="基本信息"></el-step>
+                                        <el-step title="职业信息"></el-step>
+                                        <el-step title="联系人信息"></el-step>
+                                        <el-step title="其他信息"></el-step>
+                                        <el-step title="附件信息"></el-step>
+                                    </el-steps>
+                                    <el-row style="margin: 20px 0;">
+                                        <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
+                                            <el-button type="primary" @click="preview">上一项</el-button>
+                                            <el-button type="primary" @click="next">下一项</el-button>
+                                        </div>
+                                    </el-row>
+                                @endif
 
                             </el-form>
+
+                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '管理员')
+                                <el-row>
+                                    <el-col :span="22" :offset="1">
+                                        <el-input type="textarea" v-model="sh.shyj" placeholder="请输入审核意见" :rows="5"></el-input>
+                                    </el-col>
+                                </el-row>
+
+                                <el-row>
+                                    <el-col>
+                                        <el-button-group style="margin-left: 50%; transform: translateX(-50%); margin-top: 20px; margin-bottom: 20px;">
+                                            <el-button type="danger" icon="el-icon-error" @click="tjsh('qtxx','审核不通过')" >审核不通过</el-button>
+                                            <el-button type="primary" icon="el-icon-success" @click="tjsh('qtxx','审核通过')" >审核通过</el-button>
+                                        </el-button-group>
+                                    </el-col>
+                                </el-row>
+                            @endif
+
                             @include('shared._message_vue')
                             @include('shared._errors_vue')
                         </el-card>
@@ -316,27 +396,29 @@
                             >
                                 {{ csrf_field() }}
 
-                                <div style="font-size: 14px; text-align: center;margin-bottom: 10px;">
-                                    请上传身份证照片、房产证产品等有效证明文件<br>
-                                    <em style="color: #ccc;font-style: unset">支持多图上传</em>
-                                </div>
+                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员')
+                                    <div style="font-size: 14px; text-align: center;margin-bottom: 10px;">
+                                        请上传身份证照片、房产证产品等有效证明文件<br>
+                                        <em style="color: #ccc;font-style: unset">支持多图上传</em>
+                                    </div>
 
-                                <el-row style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
-                                    <el-upload
-                                            action="{{ route('jbxxCreate') }}"
-                                            :before-upload="bfUpload"
-                                            name="fjxx"
-                                            ref="img"
-                                            drag
-                                            multiple
-                                            :on-success="imgUploadSuccess"
-                                            :on-error="imgUploadError"
-                                            :auto-upload="false"
-                                            list-type="picture">
-                                        <i class="el-icon-upload"></i>
-                                        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-                                    </el-upload>
-                                </el-row>
+                                    <el-row style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
+                                        <el-upload
+                                                action="{{ route('jbxxCreate') }}"
+                                                :before-upload="bfUpload"
+                                                name="fjxx"
+                                                ref="img"
+                                                drag
+                                                multiple
+                                                :on-success="imgUploadSuccess"
+                                                :on-error="imgUploadError"
+                                                :auto-upload="false"
+                                                list-type="picture">
+                                            <i class="el-icon-upload"></i>
+                                            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                                        </el-upload>
+                                    </el-row>
+                                @endif
 
                                 <el-row :gutter="10">
                                     @foreach($img_lists as $img_list)
@@ -348,29 +430,51 @@
                                     @endforeach
                                 </el-row>
 
-                                <el-alert
-                                        center
-                                        show-icon
-                                        :closable="false"
-                                        title="图片暂时无法部分修改，如果图片需要修改，请上传所有正确的图片"
-                                        type="warning">
-                                </el-alert>
+                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员')
+                                    <el-alert
+                                            center
+                                            show-icon
+                                            :closable="false"
+                                            title="图片暂时无法部分修改，如果图片需要修改，请上传所有正确的图片"
+                                            type="warning">
+                                    </el-alert>
+                                    <el-steps :active="activeStep" finish-status="success" align-center
+                                              style="margin: 20px 0;">
+                                        <el-step title="基本信息"></el-step>
+                                        <el-step title="职业信息"></el-step>
+                                        <el-step title="联系人信息"></el-step>
+                                        <el-step title="其他信息"></el-step>
+                                        <el-step title="附件信息"></el-step>
+                                    </el-steps>
 
-                                <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">
-                                    <el-step title="基本信息"></el-step>
-                                    <el-step title="职业信息"></el-step>
-                                    <el-step title="联系人信息"></el-step>
-                                    <el-step title="其他信息"></el-step>
-                                    <el-step title="附件信息"></el-step>
-                                </el-steps>
+                                    <el-row style="margin: 20px 0;">
+                                        <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
+                                            <el-button type="primary" @click="preview">上一项</el-button>
+                                            <el-button type="primary" @click="uploadSubmit">上传图片</el-button>
+                                            <el-button type="primary"
+                                                       @click="onSubmitPost('{{ url('/jkrUpdate/'. $jbxx -> id) }}', jbxx, 'jbxx' )">
+                                                更新信息
+                                            </el-button>
+                                        </div>
+                                    </el-row>
+                                @endif
 
-                                <el-row style="margin: 20px 0;">
-                                    <div style="display: inline-block; margin-left: 50%; transform: translateX(-50%)">
-                                        <el-button type="primary" @click="preview">上一项</el-button>
-                                        <el-button type="primary" @click="uploadSubmit">上传图片</el-button>
-                                        <el-button type="primary" @click="onSubmitPost('{{ url('/jkrUpdate/'. $jbxx -> id) }}', jbxx, 'jbxx' )">更新信息</el-button>
-                                    </div>
-                                </el-row>
+                                @if (\Illuminate\Support\Facades\Auth::user() -> role === '管理员')
+                                    <el-row>
+                                        <el-col :span="22" :offset="1">
+                                            <el-input type="textarea" v-model="sh.shyj" placeholder="请输入审核意见" :rows="5"></el-input>
+                                        </el-col>
+                                    </el-row>
+
+                                    <el-row>
+                                        <el-col>
+                                            <el-button-group style="margin-left: 50%; transform: translateX(-50%); margin-top: 20px; margin-bottom: 20px;">
+                                                <el-button type="danger" icon="el-icon-error" @click="tjsh('fjxx','审核不通过')" >审核不通过</el-button>
+                                                <el-button type="primary" icon="el-icon-success" @click="tjsh('fjxx','审核通过')" >审核通过</el-button>
+                                            </el-button-group>
+                                        </el-col>
+                                    </el-row>
+                                @endif
 
                             </el-form>
                             @include('shared._message_vue')
@@ -381,7 +485,7 @@
             </el-tab-pane>
         </el-tabs>
     </template>
-    @stop
+@stop
 
 @section('script_vue')
 

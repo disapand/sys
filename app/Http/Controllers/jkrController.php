@@ -179,4 +179,8 @@ class jkrController extends Controller
         return response() -> json($jkrs);
     }
 
+    public function sh($shyj = '', $sort, $zt = '审核不通过') {
+
+    }
+
 }

@@ -29,3 +29,4 @@ Route::get('/jkrlist', 'jkrController@list') -> name('jkrList');
 Route::get('/jkrShow/{jbxx}', 'jkrController@show') -> name('jkrShow');
 Route::post('/jkrUpdate/{jbxx}', 'jkrController@update') -> name('jbxxUpdate');
 Route::get('/jkrQuery/{condition?}/queryString/{queryString?}', 'jkrController@query') -> name('jkrQuery');
+Route::post('/jkrSh/{shyj?}/sort/{sort?}/zt/{zt?}', 'jkrController@sh') -> name('jkrSh');

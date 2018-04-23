@@ -51,110 +51,113 @@
             return {
                 show: true,
                 usersData: [],
-                jkr:[],
-                activeIndex:'',
+                jkr: [],
+                activeIndex: '',
                 activeStep: 0,
                 activeTab: '1',
-                show:false,
-                query_string:'',
+                show: false,
+                query_string: '',
                 query_condition: '借款人编号',
                 jbxx: {
-                    name:'',
+                    name: '',
                     tel: '',
                     IDCard: '',
-                    sex:'',
-                    jklb:'',
-                    xl:'',
-                    hj:'',
-                    addr:'',
-                    gzdw:'',
-                    dwxz:'',
-                    sshy:'',
-                    rzbm:'',
-                    zw:'',
-                    rzsj:'',
-                    dwdz:'',
-                    dwdh:'',
-                    rzxs:'',
-                    zsr:'',
-                    name:'',
-                    gx:'',
-                    lxdh:'',
-                    sfzh:'',
-                    dk:'',
-                    fclb:'',
-                    gmsj:'',
-                    gmjg:'',
-                    gmfs:'',
-                    gmdz:'',
-                    fjxx:[],
+                    sex: '',
+                    jklb: '',
+                    xl: '',
+                    hj: '',
+                    addr: '',
+                    gzdw: '',
+                    dwxz: '',
+                    sshy: '',
+                    rzbm: '',
+                    zw: '',
+                    rzsj: '',
+                    dwdz: '',
+                    dwdh: '',
+                    rzxs: '',
+                    zsr: '',
+                    name: '',
+                    gx: '',
+                    lxdh: '',
+                    sfzh: '',
+                    dk: '',
+                    fclb: '',
+                    gmsj: '',
+                    gmjg: '',
+                    gmfs: '',
+                    gmdz: '',
+                    fjxx: [],
+                },
+                sh: {
+                    shyj: '无',
                 },
                 jbxxRules: {
-                    name:[
-                        {required: true, message:'请输入姓名', trigger:'blur'}
+                    name: [
+                        {required: true, message: '请输入姓名', trigger: 'blur'}
                     ],
-                    tel:[
-                        {required: true, message:'请输入电话号码', trigger:'blur'},
-                        {min: 11, max:11, message:'请输入正确的电话号码', trigger:'blur'}
+                    tel: [
+                        {required: true, message: '请输入电话号码', trigger: 'blur'},
+                        {min: 11, max: 11, message: '请输入正确的电话号码', trigger: 'blur'}
                     ],
-                    IDCard:[
-                        {required: true, message:'请输入身份证号', trigger:'blur'},
-                        {min: 18, max:18, message:'请输入正确的身份证号', trigger:'blur'}
+                    IDCard: [
+                        {required: true, message: '请输入身份证号', trigger: 'blur'},
+                        {min: 18, max: 18, message: '请输入正确的身份证号', trigger: 'blur'}
                     ],
-                    sex:[
-                        {required: true, message:'请输入性别', trigger:'change'}
+                    sex: [
+                        {required: true, message: '请输入性别', trigger: 'change'}
                     ],
-                    jklb:[
-                        {required: true, message:'请选择借款类别', trigger:'change'}
+                    jklb: [
+                        {required: true, message: '请选择借款类别', trigger: 'change'}
                     ],
-                    addr:[
-                        {required: true, message:'请输入住宅地址', trigger:'blur'}
+                    addr: [
+                        {required: true, message: '请输入住宅地址', trigger: 'blur'}
                     ],
-/*                    rzsj:[
-                        {required: true, message:'请选择入职时间', trigger:'change'}
+                    /*                    rzsj:[
+                                            {required: true, message:'请选择入职时间', trigger:'change'}
+                                        ],
+                                        dwdz:[
+                                            {required: true, message:'请输入单位地址', trigger:'blur'}
+                                        ],
+                                        dwdh:[
+                                            {required: true, message:'请输入单位电话', trigger:'blur'}
+                                        ],
+                                        rzxs:[
+                                            {required: true, message:'请输入任职薪水', trigger:'blur'}
+                                        ],*/
+                    zsr: [
+                        {required: true, message: '请输入总收入', trigger: 'blur'}
                     ],
-                    dwdz:[
-                        {required: true, message:'请输入单位地址', trigger:'blur'}
+                    lxdh: [
+                        {min: 11, max: 11, message: '请输入正确的电话号码', trigger: 'blur'}
                     ],
-                    dwdh:[
-                        {required: true, message:'请输入单位电话', trigger:'blur'}
-                    ],
-                    rzxs:[
-                        {required: true, message:'请输入任职薪水', trigger:'blur'}
-                    ],*/
-                    zsr:[
-                        {required: true, message:'请输入总收入', trigger:'blur'}
-                    ],
-                    lxdh:[
-                        {min: 11, max:11, message:'请输入正确的电话号码', trigger:'blur'}
-                    ],
-                    sfzh:[
-                        {min: 18, max:18, message:'请输入正确的身份证号', trigger:'blur'}
+                    sfzh: [
+                        {min: 18, max: 18, message: '请输入正确的身份证号', trigger: 'blur'}
                     ]
                 },
                 user: {
-                  name: '',
-                  Num: '',
-                  role: '',
-                  password: '',
+                    name: '',
+                    Num: '',
+                    role: '',
+                    password: '',
                 },
-                userRules:{
+                userRules: {
                     name: [
-                        { required: true, message:'请输入姓名', trigger: 'blur' }
+                        {required: true, message: '请输入姓名', trigger: 'blur'}
                     ],
                     Num: [
-                        { required: true, message:'请输入工号', trigger: 'blur' }
+                        {required: true, message: '请输入工号', trigger: 'blur'}
                     ],
                     role: [
-                        { required: true, message:'请选择账号类型', trigger: 'change' }
+                        {required: true, message: '请选择账号类型', trigger: 'change'}
                     ],
                     password: [
-                        { required: true, message:'请输入密码', trigger: 'blur' }
+                        {required: true, message: '请输入密码', trigger: 'blur'}
                     ],
                 }
             }
         },
-        methods:{
+        methods: {
             //vue跳转链接的方法，参数为要跳转的目标地址
             tzlj(mblj) {
                 $(window).attr('location', mblj);
@@ -162,14 +165,14 @@
 
             //ajax提交post请求的方法
             onSubmitPost(uri, data, tmp) {
-                vm.$refs[tmp].validate( (valid) => {
-                    if (valid){
+                vm.$refs[tmp].validate((valid) => {
+                    if (valid) {
                         $.post(uri, data, function (msg, textStatus, jqXHR) {
                             console.log(msg)
                             vm.$message({
                                 showClose: true,
                                 message: msg.dd,
-                                type:msg.statue
+                                type: msg.statue
                             })
                             vm.$refs[tmp].resetFields()
                             if (tmp == 'jbxx') {
@@ -191,93 +194,98 @@
             onSubmit(uri, data, action) {
                 uri = uri + '/' + data
                 //如果是删除则执行
-                if ( action == 'del'){
+                if (action == 'del') {
                     vm.$confirm('此操作将永久删除信息，是否继续？', '警告', {
                         confirmButtonText: '确定',
-                        cancelButtonText:'取消',
+                        cancelButtonText: '取消',
                         type: 'warning'
                     }).then(() => {
                         $.post(uri, function (msg) {
                             vm.$message({
                                 showClose: true,
                                 message: msg.dd,
-                                type:msg.statue
+                                type: msg.statue
                             })
                             window.location.reload()
                         })
-                    }).catch(() =>{
+                    }).catch(() => {
                         vm.$message({
                             showClose: true,
-                            type:'info',
-                            message:'取消删除'
+                            type: 'info',
+                            message: '取消删除'
                         })
                     })
-                } else if(action = 'show') {
+                } else if (action = 'show') {
                     window.location.href = uri
                 }
             },
 
             //步骤条点击下一步，tab跟着跳转的方法
-            next(){
-                if(vm.activeStep ++ > 3) {
+            next() {
+                if (vm.activeStep++ > 3) {
                     vm.activeTab = '1'
                     vm.activeStep = 0
-                }else{
+                } else {
                     vm.activeTab = vm.activeStep + 1 + ''
                 }
             },
 
             //步骤条点击上一步，tab跟着跳转的方法
-            preview(){
-                if (vm.activeStep -- < 0) {
+            preview() {
+                if (vm.activeStep-- < 0) {
                     vm.activeTab = '5'
                     vm.activeStep = 4
-                }else {
+                } else {
                     vm.activeTab = vm.activeStep + 1 + ''
                 }
             },
 
             //tab切换，同步步骤条的方法
-            handleClick(tab, event){
+            handleClick(tab, event) {
                 vm.activeStep = tab.name - 1
             },
-            bfUpload(file){
+            bfUpload(file) {
 
             },
 
             //上传图片的方法
-            uploadSubmit(){
+            uploadSubmit() {
                 vm.$refs.img.submit()
             },
             //图片上传成功的回调方法
-            imgUploadSuccess(response, file, fileList){
+            imgUploadSuccess(response, file, fileList) {
                 vm.activeStep = 5
                 $('#jbxxSubmit').removeAttr('disabled').removeClass('is-disabled')
                 vm.jbxx.fjxx.push(response.dd)
             },
-            uploadSubmit(){
+            uploadSubmit() {
                 vm.$refs.img.submit()
             },
-            imgUploadError(response, file, fileList){
+            imgUploadError(response, file, fileList) {
                 vm.$message(response)
             },
-            tableRowClassName({row, rowIndex}){
-                if (row.jbxx_zt == '审核不通过' || row.zyxx_zt == '审核不通过' || row.lxrxx_zt == '审核不通过' || row.qtxx_zt == '审核不通过' || row.fjxx_zt == '审核不通过' )  {
+            tableRowClassName({row, rowIndex}) {
+                if (row.jbxx_zt == '审核不通过' || row.zyxx_zt == '审核不通过' || row.lxrxx_zt == '审核不通过' || row.qtxx_zt == '审核不通过' || row.fjxx_zt == '审核不通过') {
                     return 'warning-row'
-                }else if(row.jbxx_zt == '审核通过' && row.zyxx_zt == '审核通过' && row.lxrxx_zt == '审核通过' && row.qtxx_zt == '审核通过' && row.fjxx_zt == '审核通过'){
+                } else if (row.jbxx_zt == '审核通过' && row.zyxx_zt == '审核通过' && row.lxrxx_zt == '审核通过' && row.qtxx_zt == '审核通过' && row.fjxx_zt == '审核通过') {
                     return 'success-row'
                 }
             },
-            query_jkr(){
-                $.get( "{{ url('/jkrQuery')}}" + "/" +  vm.query_condition + "/queryString/" + vm.query_string, function (data, statue) {
+            query_jkr() {
+                $.get("{{ url('/jkrQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string, function (data, statue) {
                     vm.jkr = data
                     console.log(data)
                 })
             },
+            tjsh(sort, zt){
+                $.post("{{ url('/jkrSh') }}" + "/" + vm.sh.shyj + "/sort/" + sort + "/zt/" + zt, function (data, statue) {
+                    console.log(data)
+                })
+            }
         },
 
         computed: {
-                @yield('computed')
+            @yield('computed')
         }
     })
 
