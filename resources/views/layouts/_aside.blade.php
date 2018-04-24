@@ -20,7 +20,9 @@
                     <i class="el-icon-edit"></i>
                     <span>借款人管理</span>
                 </template>
-                <el-menu-item index="1-1" @click="tzlj('{{ route('jkrCreate') }}')">添加借款人</el-menu-item>
+                @if(\Illuminate\Support\Facades\Auth::user() -> role == '业务员')
+                    <el-menu-item index="1-1" @click="tzlj('{{ route('jkrCreate') }}')">添加借款人</el-menu-item>
+                @endif
                 <el-menu-item index="1-2" @click="tzlj('{{ route('jkrList') }}')">借款人列表</el-menu-item>
             </el-submenu>
             <el-submenu index="3">

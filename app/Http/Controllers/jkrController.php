@@ -7,6 +7,7 @@ use App\Models\jbxx;
 use App\Models\lxrxx;
 use App\Models\qtxx;
 use App\Models\zyxx;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -179,8 +180,51 @@ class jkrController extends Controller
         return response() -> json($jkrs);
     }
 
-    public function sh($shyj = '', $sort, $zt = '审核不通过') {
+    public function sh($shyj = '', jbxx $jbxx,  $sort, $zt = '审核不通过', Request $request) {
 
+        $fjxx = fjxx::where('jbxx_id', $jbxx -> id) -> first();
+
+        if ($shyj == '') {
+            return response() -> json(['statue' => 'error', 'dd' => '请输入审核意见']);
+        }else {
+            switch ($sort) {
+                case 'jbxx':
+                    $fjxx -> jbxx_yj = $shyj;
+                    $fjxx -> jbxx_zt = $zt;
+                    $fjxx -> jbxxshr = Auth::user() -> id;
+                    $fjxx -> jbxxshsj = Carbon::now();
+                    break;
+                case 'lxrxx':
+                    $fjxx -> lxrxx_yj = $shyj;
+                    $fjxx -> lxrxx_zt = $zt;
+                    $fjxx -> lxrxxshr = Auth::user() -> id;
+                    $fjxx -> lxrxxshsj = Carbon::now();
+                    break;
+                case 'zyxx':
+                    $fjxx -> zyxx_yj = $shyj;
+                    $fjxx -> zyxx_zt = $zt;
+                    $fjxx -> zyxxshr = Auth::user() -> id;
+                    $fjxx -> zyxxshsj = Carbon::now();
+                    break;
+                case 'qtxx':
+                    $fjxx -> qtxx_yj = $shyj;
+                    $fjxx -> qtxx_zt = $zt;
+                    $fjxx -> qtxxshr = Auth::user() -> id;
+                    $fjxx -> qtxxshsj = Carbon::now();
+                    break;
+                case 'fjxx':
+                    $fjxx -> fjxx_yj = $shyj;
+                    $fjxx -> fjxx_zt = $zt;
+                    $fjxx -> fjxxshr = Auth::user() -> id;
+                    $fjxx -> fjxxshsj = Carbon::now();
+                    break;
+                default: break;
+            }
+            $fjxx -> save();
+//            return response() -> json(['statue' => 'success', 'dd' => $shyj . '--' . $sort . '--' . $zt]);
+            return response() -> json(['statue' => 'success', 'dd' => '审核信息添加成功']);
+
+        }
     }
 
 }

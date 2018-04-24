@@ -2,11 +2,11 @@
 
 @section('css')
     .el-table .warning-row {
-    background: #;
+    background: #F56C6C;
     }
 
     .el-table .success-row {
-    background: #f0f9eb;
+    background: #67C23A;
     }
     @stop
 
@@ -29,7 +29,6 @@
                     :data="jkr"
                     style="width: 100%;"
                     border
-                    stripe
                     :row-class-name="tableRowClassName">
                 <el-table-column
                         prop="id"
@@ -87,7 +86,7 @@
                     <template slot-scope="scope">
                         <el-button
                                 size="mini"
-                                type="danger"
+                                type="primary"
                                 @click="onSubmit('{{ url('/jkrShow') }}', scope.row.id, 'show')">详情
                         </el-button>
                     </template>

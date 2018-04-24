@@ -14,7 +14,7 @@
                             </div>
 
                             <el-form ref="jbxx" label-width="100px" :model="jbxx" size="mini" :rules="jbxxRules"
-                                     @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role != '业务员')
                                      disabled
                                     @endif
                             >
@@ -86,7 +86,7 @@
                                 @endif
 
                             </el-form>
-                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '管理员')
+                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
                                 <el-row>
                                     <el-col :span="22" :offset="1">
                                         <el-input type="textarea" v-model="sh.shyj" placeholder="请输入审核意见" :rows="5"></el-input>
@@ -96,8 +96,8 @@
                                 <el-row>
                                     <el-col>
                                         <el-button-group style="margin-left: 50%; transform: translateX(-50%); margin-top: 20px; margin-bottom: 20px;">
-                                            <el-button type="danger" icon="el-icon-error" @click="tjsh('jbxx','审核不通过')" >审核不通过</el-button>
-                                            <el-button type="primary" icon="el-icon-success" @click="tjsh('jbxx','审核通过')" >审核通过</el-button>
+                                            <el-button type="danger" icon="el-icon-error" @click="tjsh({{ $jbxx -> id }},jbxx, 'jbxx','审核不通过')" >审核不通过</el-button>
+                                            <el-button type="primary" icon="el-icon-success" @click="tjsh({{ $jbxx -> id }},jbxx, 'jbxx','审核通过')" >审核通过</el-button>
                                         </el-button-group>
                                     </el-col>
                                 </el-row>
@@ -118,7 +118,7 @@
                             </div>
 
                             <el-form ref="jbxx" label-width="100px" :model="jbxx" size="mini" :rules="jbxxRules"
-                                     @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role != '业务员')
                                      disabled
                                     @endif
                             >
@@ -188,7 +188,7 @@
 
                             </el-form>
 
-                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '管理员')
+                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
                                 <el-row>
                                     <el-col :span="22" :offset="1">
                                         <el-input type="textarea" v-model="sh.shyj" placeholder="请输入审核意见" :rows="5"></el-input>
@@ -198,8 +198,8 @@
                                 <el-row>
                                     <el-col>
                                         <el-button-group style="margin-left: 50%; transform: translateX(-50%); margin-top: 20px; margin-bottom: 20px;">
-                                            <el-button type="danger" icon="el-icon-error" @click="tjsh('zyxx','审核不通过')" >审核不通过</el-button>
-                                            <el-button type="primary" icon="el-icon-success" @click="tjsh('zyxx','审核通过')" >审核通过</el-button>
+                                            <el-button type="danger" icon="el-icon-error" @click="tjsh({{ $jbxx -> id }},jbxx, 'zyxx','审核不通过')" >审核不通过</el-button>
+                                            <el-button type="primary" icon="el-icon-success" @click="tjsh({{ $jbxx -> id }},jbxx, 'zyxx','审核通过')" >审核通过</el-button>
                                         </el-button-group>
                                     </el-col>
                                 </el-row>
@@ -221,7 +221,7 @@
                             </div>
 
                             <el-form ref="jbxx" label-width="180px" :model="jbxx" size="mini" :rules="jbxxRules"
-                                     @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role != '业务员')
                                      disabled
                                     @endif
                             >
@@ -272,7 +272,7 @@
 
                             </el-form>
 
-                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '管理员')
+                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
                                 <el-row>
                                     <el-col :span="22" :offset="1">
                                         <el-input type="textarea" v-model="sh.shyj" placeholder="请输入审核意见" :rows="5"></el-input>
@@ -282,8 +282,8 @@
                                 <el-row>
                                     <el-col>
                                         <el-button-group style="margin-left: 50%; transform: translateX(-50%); margin-top: 20px; margin-bottom: 20px;">
-                                            <el-button type="danger" icon="el-icon-error" @click="tjsh('lxrxx','审核不通过')" >审核不通过</el-button>
-                                            <el-button type="primary" icon="el-icon-success" @click="tjsh('lxrxx','审核通过')" >审核通过</el-button>
+                                            <el-button type="danger" icon="el-icon-error" @click="tjsh({{ $jbxx -> id }},jbxx, 'lxrxx','审核不通过')" >审核不通过</el-button>
+                                            <el-button type="primary" icon="el-icon-success" @click="tjsh({{ $jbxx -> id }},jbxx, 'lxrxx','审核通过')" >审核通过</el-button>
                                         </el-button-group>
                                     </el-col>
                                 </el-row>
@@ -306,7 +306,7 @@
                             </div>
 
                             <el-form ref="jbxx" label-width="130px" :model="jbxx" size="mini" :rules="jbxxRules"
-                                     @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role != '业务员')
                                      disabled
                                     @endif
                             >
@@ -353,10 +353,9 @@
                                         </div>
                                     </el-row>
                                 @endif
-
                             </el-form>
 
-                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '管理员')
+                            @if (\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
                                 <el-row>
                                     <el-col :span="22" :offset="1">
                                         <el-input type="textarea" v-model="sh.shyj" placeholder="请输入审核意见" :rows="5"></el-input>
@@ -366,8 +365,8 @@
                                 <el-row>
                                     <el-col>
                                         <el-button-group style="margin-left: 50%; transform: translateX(-50%); margin-top: 20px; margin-bottom: 20px;">
-                                            <el-button type="danger" icon="el-icon-error" @click="tjsh('qtxx','审核不通过')" >审核不通过</el-button>
-                                            <el-button type="primary" icon="el-icon-success" @click="tjsh('qtxx','审核通过')" >审核通过</el-button>
+                                            <el-button type="danger" icon="el-icon-error" @click="tjsh({{ $jbxx -> id }},jbxx, 'qtxx','审核不通过')" >审核不通过</el-button>
+                                            <el-button type="primary" icon="el-icon-success" @click="tjsh({{ $jbxx -> id }},jbxx, 'qtxx','审核通过')" >审核通过</el-button>
                                         </el-button-group>
                                     </el-col>
                                 </el-row>
@@ -390,7 +389,7 @@
                             </div>
 
                             <el-form ref="jbxx" label-width="130px" :model="jbxx" size="mini"
-                                     @if(\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role != '业务员')
                                      disabled
                                     @endif
                             >
@@ -458,8 +457,9 @@
                                         </div>
                                     </el-row>
                                 @endif
+                            </el-form>
 
-                                @if (\Illuminate\Support\Facades\Auth::user() -> role === '管理员')
+                                @if (\Illuminate\Support\Facades\Auth::user() -> role === '审核员')
                                     <el-row>
                                         <el-col :span="22" :offset="1">
                                             <el-input type="textarea" v-model="sh.shyj" placeholder="请输入审核意见" :rows="5"></el-input>
@@ -469,14 +469,13 @@
                                     <el-row>
                                         <el-col>
                                             <el-button-group style="margin-left: 50%; transform: translateX(-50%); margin-top: 20px; margin-bottom: 20px;">
-                                                <el-button type="danger" icon="el-icon-error" @click="tjsh('fjxx','审核不通过')" >审核不通过</el-button>
-                                                <el-button type="primary" icon="el-icon-success" @click="tjsh('fjxx','审核通过')" >审核通过</el-button>
+                                                <el-button type="danger" icon="el-icon-error" @click="tjsh({{ $jbxx -> id }},jbxx, 'fjxx','审核不通过')" >审核不通过</el-button>
+                                                <el-button type="primary" icon="el-icon-success" @click="tjsh({{ $jbxx -> id }},jbxx, 'fjxx','审核通过')" >审核通过</el-button>
                                             </el-button-group>
                                         </el-col>
                                     </el-row>
                                 @endif
 
-                            </el-form>
                             @include('shared._message_vue')
                             @include('shared._errors_vue')
                         </el-card>

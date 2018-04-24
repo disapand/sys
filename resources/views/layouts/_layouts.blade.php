@@ -277,9 +277,14 @@
                     console.log(data)
                 })
             },
-            tjsh(sort, zt){
-                $.post("{{ url('/jkrSh') }}" + "/" + vm.sh.shyj + "/sort/" + sort + "/zt/" + zt, function (data, statue) {
+            tjsh(jbxx, data, sort, zt){
+                $.post("{{ url('/jkrSh') }}" + "/" + vm.sh.shyj + "/jbxx/" + jbxx +  "/sort/" + sort + "/zt/" + zt, data, function (data, statue) {
                     console.log(data)
+                    vm.$message({
+                        showClose: true,
+                        type: data.statue,
+                        message: data.dd
+                    })
                 })
             }
         },
