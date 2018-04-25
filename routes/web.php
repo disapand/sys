@@ -30,3 +30,7 @@ Route::get('/jkrShow/{jbxx}', 'jkrController@show') -> name('jkrShow');
 Route::post('/jkrUpdate/{jbxx}', 'jkrController@update') -> name('jbxxUpdate');
 Route::get('/jkrQuery/{condition?}/queryString/{queryString?}', 'jkrController@query') -> name('jkrQuery');
 Route::post('/jkrSh/{shyj?}/jbxx/{jbxx}/sort/{sort?}/zt/{zt?}', 'jkrController@sh') -> name('jkrSh');
+
+Route::get('/jkCreate', 'jkController@create') -> name('jk');
+Route::post('/jkCreate', 'jkController@store') -> name('jkCreate');
+Route::get('/jkList', 'jkController@list') -> name('jkList');

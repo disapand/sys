@@ -37,5 +37,8 @@ class jbxx extends Model
         return $this -> hasOne('App\Models\fjxx', 'jbxx_id', 'id');
     }
 
+    public function jk() {
+        return $this -> hasMany('App\Models\jk', 'jbxx_id', 'id');
+    }
 
 }

@@ -30,16 +30,16 @@
                     <i class="el-icon-edit-outline"></i>
                     <span>借款管理</span>
                 </template>
-                <el-menu-item index="2-1">添加借款</el-menu-item>
-                <el-menu-item index="2-2">借款列表</el-menu-item>
+                <el-menu-item index="2-1" @click="tzlj(' {{ route('jk') }} ')">添加借款</el-menu-item>
+                <el-menu-item index="2-2" @click="tzlj(' {{ route('jkList') }}')">借款列表</el-menu-item>
             </el-submenu>
             <el-submenu index="4">
                 <template slot="title">
                     <i class="el-icon-location"></i>
                     <span>还款管理</span>
                 </template>
-                <el-menu-item index="2-1">添加还款</el-menu-item>
-                <el-menu-item index="2-2">还款列表</el-menu-item>
+                <el-menu-item index="3-1">添加还款</el-menu-item>
+                <el-menu-item index="3-2">还款列表</el-menu-item>
             </el-submenu>
         </el-menu>
     </el-col>

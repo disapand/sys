@@ -1,15 +1,5 @@
 @extends('layouts._layouts')
 
-@section('css')
-    .el-table .warning-row {
-    background: #F56C6C;
-    }
-
-    .el-table .success-row {
-    background: #67C23A;
-    }
-    @stop
-
 @section('content')
     @include('shared._errors_vue')
 
@@ -29,8 +19,7 @@
                     :data="jkr"
                     style="width: 100%;"
                     border
-                    :default-sort = "{prop: 'id', order: 'ascending'}"
-                    :row-class-name="tableRowClassName">
+                    :default-sort = "{prop: 'id', order: 'ascending'}">
                 <el-table-column
                         prop="id"
                         sortable
@@ -40,58 +29,66 @@
                 <el-table-column
                         prop="name"
                         label="借款人姓名"
-                        sortable
-                        width="120">
+                        sortable>
                 </el-table-column>
                 <el-table-column
-                        prop="jklb"
+                        prop="jklx"
                         label="借款类型"
-                        sortable
-                        width="110">
+                        sortable>
                 </el-table-column>
                 <el-table-column
-                        prop="addr"
-                        label="住宅地址">
+                        prop="hth"
+                        label="合同号">
                 </el-table-column>
                 <el-table-column
-                        prop="jbxx_zt"
-                        label="基本信息审核状态"
-                        sortable
-                        width="100">
+                        prop="jkje"
+                        label="借款金额"
+                        sortable>
                 </el-table-column>
                 <el-table-column
-                        prop="zyxx_zt"
-                        label="职业信息审核状态"
-                        sortable
-                        width="100">
+                        prop="jksj"
+                        label="借款时间"
+                        sortable>
                 </el-table-column>
                 <el-table-column
-                        prop="lxrxx_zt"
-                        label="联系人信息审核状态"
-                        sortable
-                        width="120">
+                        prop="jkqx"
+                        label="借款期限"
+                        sortable>
                 </el-table-column>
                 <el-table-column
-                        prop="qtxx_zt"
-                        label="其他信息审核状态"
-                        sortable
-                        width="100">
+                        prop="dqsj"
+                        label="到期时间"
+                        sortable>
                 </el-table-column>
                 <el-table-column
-                        prop="fjxx_zt"
-                        label="附件信息审核状态"
-                        sortable
-                        width="100">
+                        prop="yhlx"
+                        label="已还利息"
+                        sortable>
                 </el-table-column>
                 <el-table-column
-                        prop="created_at"
+                        prop="zlx"
                         sortable
-                        label="添加时间">
+                        label="总利息">
                 </el-table-column>
                 <el-table-column
-                        prop="updated_at"
+                        prop="ll"
                         sortable
-                        label="修改时间">
+                        label="利率">
+                </el-table-column>
+                <el-table-column
+                        prop="sxf"
+                        sortable
+                        label="手续费">
+                </el-table-column>
+                <el-table-column
+                        prop="sfyh"
+                        sortable
+                        label="是否已还">
+                </el-table-column>
+                <el-table-column
+                        prop="sxf"
+                        sortable
+                        label="还款方式">
                 </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
@@ -110,11 +107,6 @@
 
 @section('script_vue')
 
-    vm.activeIndex = '1-2'
-
-    @foreach($jkrs as $jkr)
-        vm.jkr.push({id: '{{ $jkr -> id }}', name: '{{ $jkr -> name }}',jklb: '{{ $jkr -> jklb }}',addr: '{{ $jkr -> addr }}',jbxx_zt: '{{ $jkr -> fjxx-> jbxx_zt }}',zyxx_zt: '{{ $jkr -> fjxx-> zyxx_zt }}',
-        lxrxx_zt: '{{ $jkr -> fjxx-> lxrxx_zt }}',qtxx_zt: '{{ $jkr -> fjxx-> qtxx_zt }}',fjxx_zt: '{{ $jkr -> fjxx-> fjxx_zt }}',created_at: '{{ $jkr -> created_at }}',updated_at: '{{ $jkr -> updated_at }}'})
-    @endforeach
+    vm.activeIndex = '2-2'
 
 @stop
