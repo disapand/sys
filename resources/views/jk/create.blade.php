@@ -132,6 +132,11 @@
 @section('script_vue')
 
     vm.activeIndex = '2-1'
-    vm.jkr_list = {!! $users !!}
+    @foreach($users as $user)
+        vm.jkr_list.push({
+            id: ' {{ $user -> jbxx -> id }} ',
+            name: ' {{ $user -> jbxx -> name }} '
+        })
+    @endforeach
 
 @stop

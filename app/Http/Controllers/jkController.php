@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\fjxx;
 use App\Models\jbxx;
 use App\Models\jk;
 use App\Models\User;
@@ -12,7 +13,7 @@ class jkController extends Controller
 {
 
     public function create() {
-        $users = json_encode(jbxx::all()->toArray());
+        $users = fjxx::where('fjxx_zt', '审核通过')->get();
         return view('jk.create', compact('users'));
     }
 
@@ -35,7 +36,10 @@ class jkController extends Controller
     }
 
     public function list() {
-        return view('jk.list');
+
+        $js = jk::paginate(15);
+
+        return view('jk.list', compact('js'));
     }
 
 }

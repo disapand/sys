@@ -22,7 +22,7 @@ class CreateJksTable extends Migration
             $table -> string('jkje');
             $table -> string('ll');
             $table -> string('sxf');
-            $table -> timestamp('jksj')->default(\Carbon\Carbon::now());
+            $table -> string('jksj')->default(\Carbon\Carbon::now()->toDateTimeString());
             $table -> string('hkfs');
             $table -> integer('tjr');
             $table->timestamps();

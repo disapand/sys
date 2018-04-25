@@ -167,6 +167,7 @@
                     jksj: '',
                     hkfs: '',
                 },
+                jk_hk: [],
                 jkRules:{
                     jbxx_id:[
                         {required:true, message: '请选择借款人', trigger: 'blur'}

@@ -91,7 +91,7 @@ class jkrController extends Controller
     }
 
     public function list() {
-        $jkrs = jbxx::all();
+        $jkrs = jbxx::paginate(15);
 
         return view('jkr.list', compact('jkrs'));
     }

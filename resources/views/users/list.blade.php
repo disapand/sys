@@ -65,6 +65,10 @@
     </el-row>
 @stop
 
+@section('script')
+    <script src="{{ asset('/js/excellentexport.js') }}"></script>
+@stop
+
 @section('script_vue')
     @foreach( $users as $user)
         vm.usersData.push({id:'{{ $user->id }}', Num: '{{ $user->Num }}', name: '{{ $user->name }}', role:'{{ $user->role }}'})

@@ -16,9 +16,9 @@
     <template>
         <el-row :gutter="10">
             <el-table
-                    :data="jkr"
+                    :data="jk_hk"
                     style="width: 100%;"
-                    border
+                    stripe
                     :default-sort = "{prop: 'id', order: 'ascending'}">
                 <el-table-column
                         prop="id"
@@ -86,7 +86,7 @@
                         label="是否已还">
                 </el-table-column>
                 <el-table-column
-                        prop="sxf"
+                        prop="hkfs"
                         sortable
                         label="还款方式">
                 </el-table-column>
@@ -95,7 +95,7 @@
                         <el-button
                                 size="mini"
                                 type="primary"
-                                @click="onSubmit('{{ url('/jkrShow') }}', scope.row.id, 'show')">详情
+                                @click="">详情
                         </el-button>
                     </template>
                 </el-table-column>
@@ -108,5 +108,23 @@
 @section('script_vue')
 
     vm.activeIndex = '2-2'
+
+    @foreach($js as $j)
+        vm.jk_hk.push({
+            id: '{{ $j -> id }}',
+            name: '{{ $j -> jbxx -> name }}',
+            jklx: '{{ $j -> jklx }}',
+            hth: '{{ $j -> hth }}',
+            jkje: '{{ $j -> jkje }}元',
+            jksj: '{{ $j -> jksj }}',
+            jkqx: '{{ $j -> jkqx }}个月',
+            dqsj: '{{ \Carbon\Carbon::createFromFormat('Y-m-d', $j -> jksj)->addMonths($j->jkqx) -> toDateString() }}',
+            zlx: '',
+            ll: '{{ $j -> ll }}%',
+            sxf: '{{ $j -> sxf }}%',
+            sfyh: '',
+            hkfs: '{{ $j -> hkfs }}',
+        });
+    @endforeach
 
 @stop
