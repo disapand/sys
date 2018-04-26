@@ -161,7 +161,6 @@ class jkrController extends Controller
     }
 
     public function query($condition = '', $queryString = '') {
-
         $jkrs = [];
         if ( $queryString == '' ) {
             $jbxxs = jbxx::all();

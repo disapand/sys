@@ -42,4 +42,34 @@ class jkController extends Controller
         return view('jk.list', compact('js'));
     }
 
+    public function query($condition = '', $queryString = '') {
+        $jks = [];
+        if ( $queryString == '' ) {
+            $jkxxs = jk::all();
+        }else {
+            if ($condition != '借款人姓名') {
+                $jkxxs = jk::where( 'id', $queryString) -> get();
+            } else {
+                $user_name_to_id = jbxx::where('name', $queryString) -> get();
+            }
+        }
+
+        if (isset($jkxxs)) {
+            foreach ($jkxxs as $jkxx) {
+                array_push($jks ,array_merge($jkxx->jbxx -> toArray() ,$jkxx -> toArray()));
+            }
+        }
+
+        if (isset($user_name_to_id)) {
+            foreach ($user_name_to_id as $id) {
+                $t = jk::where('jbxx_id', $id -> id)->get();
+                foreach ($t as $i) {
+                    array_push($jks ,array_merge($id -> toArray(), $i -> toArray()));
+                }
+            }
+        }
+
+        return response() -> json($jks);
+    }
+
 }

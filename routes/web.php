@@ -34,3 +34,4 @@ Route::post('/jkrSh/{shyj?}/jbxx/{jbxx}/sort/{sort?}/zt/{zt?}', 'jkrController@s
 Route::get('/jkCreate', 'jkController@create') -> name('jk');
 Route::post('/jkCreate', 'jkController@store') -> name('jkCreate');
 Route::get('/jkList', 'jkController@list') -> name('jkList');
+Route::get('/jkQuery/{condition?}/queryString/{queryString?}', 'jkController@query') -> name('jkQuery');

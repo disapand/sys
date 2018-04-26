@@ -317,6 +317,12 @@
                     console.log(data)
                 })
             },
+            query_jk() {
+                $.get("{{ url('/jkQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string, function (data, statue) {
+                    vm.jk_hk = data
+                    console.log(data)
+                })
+            },
             tjsh(jbxx, data, sort, zt){
                 $.post("{{ url('/jkrSh') }}" + "/" + vm.sh.shyj + "/jbxx/" + jbxx +  "/sort/" + sort + "/zt/" + zt, data, function (data, statue) {
                     console.log(data)
