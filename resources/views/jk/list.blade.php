@@ -95,7 +95,7 @@
                         <el-button
                                 size="mini"
                                 type="primary"
-                                @click="">详情
+                                @click="onSubmit(' {{ url('/jkShow') }}', scope.row.id, 'show')">详情
                         </el-button>
                     </template>
                 </el-table-column>

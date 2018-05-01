@@ -72,4 +72,8 @@ class jkController extends Controller
         return response() -> json($jks);
     }
 
+    public function show(jk $jk){
+        return view('jk.show', compact('jk'));
+    }
+
 }
