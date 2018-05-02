@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class hk extends Model
 {
-    public function show() {
+    protected $fillable = [
 
-    }
+    ];
 }

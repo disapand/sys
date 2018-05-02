@@ -52,9 +52,10 @@
                     <el-col :span="6" style="font-weight: bold">{{ $jk -> user -> name }}</el-col>
                 </el-row>
             </el-card>
-
         </el-col>
     </el-row>
+
+    @include('hk.hk')
 
 @stop
 

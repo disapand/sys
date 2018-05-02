@@ -69,6 +69,21 @@ class jkrController extends Controller
                 'lxdh' => $request -> lxdh,
                 'sfzh' => $request -> sfzh,
                 'dk' => $request -> dk,
+                'lxr2' => $request -> lxr2,
+                'gx2' => $request -> gx2,
+                'lxdh2' => $request -> lxdh2,
+                'sfzh2' => $request -> sfzh2,
+                'dk2' => $request -> dk2,
+                'lxr3' => $request -> lxr3,
+                'gx3' => $request -> gx3,
+                'lxdh3' => $request -> lxdh3,
+                'sfzh3' => $request -> sfzh3,
+                'dk3' => $request -> dk3,
+                'lxr4' => $request -> lxr4,
+                'gx4' => $request -> gx4,
+                'lxdh4' => $request -> lxdh4,
+                'sfzh4' => $request -> sfzh4,
+                'dk4' => $request -> dk4,
             ]);
             qtxx::create([
                 'jbxx_id' => $tmp -> id,
@@ -91,7 +106,7 @@ class jkrController extends Controller
     }
 
     public function list() {
-        $jkrs = jbxx::paginate(15);
+        $jkrs = jbxx::paginate(9);
 
         return view('jkr.list', compact('jkrs'));
     }
@@ -141,6 +156,21 @@ class jkrController extends Controller
         $lxrxx -> lxdh = $request -> lxdh;
         $lxrxx -> sfzh = $request -> sfzh;
         $lxrxx -> dk = $request -> dk;
+        $lxrxx -> lxr2 = $request -> lxr2;
+        $lxrxx -> gx2 = $request -> gx2;
+        $lxrxx -> lxdh2 = $request -> lxdh2;
+        $lxrxx -> sfzh2 = $request -> sfzh2;
+        $lxrxx -> dk2 = $request -> dk2;
+        $lxrxx -> lxr3 = $request -> lxr3;
+        $lxrxx -> gx3 = $request -> gx3;
+        $lxrxx -> lxdh3 = $request -> lxdh3;
+        $lxrxx -> sfzh3 = $request -> sfzh3;
+        $lxrxx -> dk3 = $request -> dk3;
+        $lxrxx -> lxr4 = $request -> lxr4;
+        $lxrxx -> gx4 = $request -> gx4;
+        $lxrxx -> lxdh4 = $request -> lxdh4;
+        $lxrxx -> sfzh4 = $request -> sfzh4;
+        $lxrxx -> dk4 = $request -> dk4;
 
         $qtxx = qtxx::where('jbxx_id', $jbxx -> id) -> first();
         $qtxx -> fclb = $request -> fclb;

@@ -227,31 +227,126 @@
                             >
                                 {{ csrf_field() }}
 
-                                <el-form-item label="联系人姓名">
-                                    <el-input v-model="jbxx.lxr"></el-input>
-                                </el-form-item>
+                                <div>
+                                    <h5>联系人1</h5>
+                                    <hr>
+                                    <el-form-item label="联系人姓名">
+                                        <el-input v-model="jbxx.lxr"></el-input>
+                                    </el-form-item>
 
-                                <el-form-item label="和申请人关系">
-                                    <el-select v-model="jbxx.gx" placeholder="请选择">
-                                        <el-option label="直系亲属" value="直系亲属"></el-option>
-                                        <el-option label="朋友" value="朋友"></el-option>
-                                        <el-option label="同事" value="同事"></el-option>
-                                        <el-option label="其他" value="其他"></el-option>
-                                    </el-select>
-                                </el-form-item>
+                                    <el-form-item label="和申请人关系">
+                                        <el-select v-model="jbxx.gx" placeholder="请选择">
+                                            <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="朋友" value="朋友"></el-option>
+                                            <el-option label="同事" value="同事"></el-option>
+                                            <el-option label="其他" value="其他"></el-option>
+                                        </el-select>
+                                    </el-form-item>
 
-                                <el-form-item label="联系电话" prop="lxdh">
-                                    <el-input v-model="jbxx.lxdh"></el-input>
-                                </el-form-item>
+                                    <el-form-item label="联系电话" prop="lxdh">
+                                        <el-input v-model="jbxx.lxdh"></el-input>
+                                    </el-form-item>
 
-                                <el-form-item label="身份证号" prop="sfzh">
-                                    <el-input v-model="jbxx.sfzh"></el-input>
-                                </el-form-item>
+                                    <el-form-item label="身份证号" prop="sfzh">
+                                        <el-input v-model="jbxx.sfzh"></el-input>
+                                    </el-form-item>
 
-                                <el-form-item label="联系人是否知道此贷款">
-                                    <el-radio v-model="jbxx.dk" label="是">是</el-radio>
-                                    <el-radio v-model="jbxx.dk" label="否">否</el-radio>
-                                </el-form-item>
+                                    <el-form-item label="联系人是否知道此贷款">
+                                        <el-radio v-model="jbxx.dk" label="是">是</el-radio>
+                                        <el-radio v-model="jbxx.dk" label="否">否</el-radio>
+                                    </el-form-item>
+                                </div>
+
+
+                                <div>
+                                    <h5>联系人2</h5>
+                                    <hr>
+                                    <el-form-item label="联系人姓名">
+                                        <el-input v-model="jbxx.lxr2"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="和申请人关系">
+                                        <el-select v-model="jbxx.gx2" placeholder="请选择">
+                                            <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="朋友" value="朋友"></el-option>
+                                            <el-option label="同事" value="同事"></el-option>
+                                            <el-option label="其他" value="其他"></el-option>
+                                        </el-select>
+                                    </el-form-item>
+
+                                    <el-form-item label="联系电话" prop="lxdh">
+                                        <el-input v-model="jbxx.lxdh2"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="身份证号" prop="sfzh">
+                                        <el-input v-model="jbxx.sfzh2"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="联系人是否知道此贷款">
+                                        <el-radio v-model="jbxx.dk2" label="是">是</el-radio>
+                                        <el-radio v-model="jbxx.dk2" label="否">否</el-radio>
+                                    </el-form-item>
+                                </div>
+
+                                <div>
+                                    <h5>联系人3</h5>
+                                    <hr>
+                                    <el-form-item label="联系人姓名">
+                                        <el-input v-model="jbxx.lxr3"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="和申请人关系">
+                                        <el-select v-model="jbxx.gx3" placeholder="请选择">
+                                            <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="朋友" value="朋友"></el-option>
+                                            <el-option label="同事" value="同事"></el-option>
+                                            <el-option label="其他" value="其他"></el-option>
+                                        </el-select>
+                                    </el-form-item>
+
+                                    <el-form-item label="联系电话" prop="lxdh">
+                                        <el-input v-model="jbxx.lxdh3"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="身份证号" prop="sfzh">
+                                        <el-input v-model="jbxx.sfzh3"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="联系人是否知道此贷款">
+                                        <el-radio v-model="jbxx.dk3" label="是">是</el-radio>
+                                        <el-radio v-model="jbxx.dk3" label="否">否</el-radio>
+                                    </el-form-item>
+                                </div>
+
+                                <div>
+                                    <h5>联系人4</h5>
+                                    <hr>
+                                    <el-form-item label="联系人姓名">
+                                        <el-input v-model="jbxx.lxr4"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="和申请人关系">
+                                        <el-select v-model="jbxx.gx4" placeholder="请选择">
+                                            <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="朋友" value="朋友"></el-option>
+                                            <el-option label="同事" value="同事"></el-option>
+                                            <el-option label="其他" value="其他"></el-option>
+                                        </el-select>
+                                    </el-form-item>
+
+                                    <el-form-item label="联系电话" prop="lxdh">
+                                        <el-input v-model="jbxx.lxdh4"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="身份证号" prop="sfzh">
+                                        <el-input v-model="jbxx.sfzh4"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="联系人是否知道此贷款">
+                                        <el-radio v-model="jbxx.dk4" label="是">是</el-radio>
+                                        <el-radio v-model="jbxx.dk4" label="否">否</el-radio>
+                                    </el-form-item>
+                                </div>
 
                                 @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员')
                                     <el-steps :active="activeStep" finish-status="success" align-center
@@ -389,13 +484,13 @@
                             </div>
 
                             <el-form ref="jbxx" label-width="130px" :model="jbxx" size="mini"
-                                     @if(\Illuminate\Support\Facades\Auth::user() -> role != '业务员')
+                                     @if(\Illuminate\Support\Facades\Auth::user() -> role != '业务员' && \Illuminate\Support\Facades\Auth::user() -> role != '审核员')
                                      disabled
                                     @endif
                             >
                                 {{ csrf_field() }}
 
-                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员')
+                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员' || \Illuminate\Support\Facades\Auth::user() -> role === '审核员')
                                     <div style="font-size: 14px; text-align: center;margin-bottom: 10px;">
                                         请上传身份证照片、房产证产品等有效证明文件<br>
                                         <em style="color: #ccc;font-style: unset">支持多图上传</em>
@@ -429,7 +524,7 @@
                                     @endforeach
                                 </el-row>
 
-                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员')
+                                @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员' || \Illuminate\Support\Facades\Auth::user() -> role === '审核员')
                                     <el-alert
                                             center
                                             show-icon
@@ -511,6 +606,21 @@
     vm.jbxx.lxdh= '{{ urldecode($jbxx ->lxrxx -> lxdh) }}',
     vm.jbxx.sfzh= '{{ urldecode($jbxx ->lxrxx -> sfzh) }}',
     vm.jbxx.dk= '{{ urldecode($jbxx ->lxrxx -> dk) }}',
+    vm.jbxx.lxr2= '{{ urldecode($jbxx ->lxrxx -> lxr2) }}',
+    vm.jbxx.gx2= '{{ urldecode($jbxx ->lxrxx -> gx2) }}',
+    vm.jbxx.lxdh2= '{{ urldecode($jbxx ->lxrxx -> lxdh2) }}',
+    vm.jbxx.sfzh2= '{{ urldecode($jbxx ->lxrxx -> sfzh2) }}',
+    vm.jbxx.dk2= '{{ urldecode($jbxx ->lxrxx -> dk2) }}',
+    vm.jbxx.lxr3= '{{ urldecode($jbxx ->lxrxx -> lxr3) }}',
+    vm.jbxx.gx3= '{{ urldecode($jbxx ->lxrxx -> gx3) }}',
+    vm.jbxx.lxdh3= '{{ urldecode($jbxx ->lxrxx -> lxdh3) }}',
+    vm.jbxx.sfzh3= '{{ urldecode($jbxx ->lxrxx -> sfzh3) }}',
+    vm.jbxx.dk3= '{{ urldecode($jbxx ->lxrxx -> dk3) }}',
+    vm.jbxx.lxr4= '{{ urldecode($jbxx ->lxrxx -> lxr4) }}',
+    vm.jbxx.gx4= '{{ urldecode($jbxx ->lxrxx -> gx4) }}',
+    vm.jbxx.lxdh4= '{{ urldecode($jbxx ->lxrxx -> lxdh4) }}',
+    vm.jbxx.sfzh4= '{{ urldecode($jbxx ->lxrxx -> sfzh4) }}',
+    vm.jbxx.dk4= '{{ urldecode($jbxx ->lxrxx -> dk4) }}',
     vm.jbxx.fclb= '{{ urldecode($jbxx ->qtxx -> fclb) }}',
     vm.jbxx.gmsj= '{{ urldecode($jbxx ->qtxx -> gmsj) }}',
     vm.jbxx.gmjg= '{{ urldecode($jbxx ->qtxx -> gmjg) }}',

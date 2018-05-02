@@ -77,11 +77,26 @@
                     dwdh: '',
                     rzxs: '',
                     zsr: '',
-                    name: '',
+                    lxr: '',
                     gx: '',
                     lxdh: '',
                     sfzh: '',
                     dk: '',
+                    lxr2: '',
+                    gx2: '',
+                    lxdh2: '',
+                    sfzh2: '',
+                    dk2: '',
+                    lxr3: '',
+                    gx3: '',
+                    lxdh3: '',
+                    sfzh3: '',
+                    dk3: '',
+                    lxr4: '',
+                    gx4: '',
+                    lxdh4: '',
+                    sfzh4: '',
+                    dk4: '',
                     fclb: '',
                     gmsj: '',
                     gmjg: '',
@@ -193,7 +208,23 @@
                     hkfs:[
                         {required:true, message: '请选择还款方式', trigger: 'blur'}
                     ],
-
+                },
+                hk_list:[],
+                hkxx:{
+                    hkje:'',
+                    bj:'',
+                    lx:'',
+                },
+                hkxxRules:{
+                    hkje:[
+                        {required: true, message:'请输入还款金额', trigger: 'blur'}
+                    ],
+                    bj:[
+                        {required: true, message:'请输入本次还款本金', trigger: 'blur'}
+                    ],
+                    lx:[
+                        {required: true, message:'请输入本次还款利息', trigger: 'blur'}
+                    ],
                 },
             }
         },
@@ -215,9 +246,9 @@
                                 type: msg.statue
                             })
                             vm.$refs[tmp].resetFields()
-                            if (tmp == 'jbxx') {
+                            {{--if (tmp == 'jbxx') {--}}
                                 {{--window.location.href({{ route('jkrList') }})--}}
-                            }
+                            {{--}--}}
                         }, 'json')
                     } else {
                         vm.$message({
@@ -241,6 +272,7 @@
                         type: 'warning'
                     }).then(() => {
                         $.post(uri, function (msg) {
+                            console.log(msg)
                             vm.$message({
                                 showClose: true,
                                 message: msg.dd,
