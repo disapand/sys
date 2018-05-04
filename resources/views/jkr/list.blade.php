@@ -96,6 +96,11 @@
                         sortable
                         label="修改时间">
                 </el-table-column>
+                <el-table-column
+                        prop="khjl"
+                        sortable
+                        label="客户经理">
+                </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
                         <el-button
@@ -127,8 +132,9 @@
     vm.activeIndex = '1-2'
 
     @foreach($jkrs as $jkr)
-        vm.jkr.push({id: '{{ $jkr -> id }}', name: '{{ $jkr -> name }}',jklb: '{{ $jkr -> jklb }}',addr: '{{ $jkr -> addr }}',jbxx_zt: '{{ $jkr -> fjxx-> jbxx_zt }}',zyxx_zt: '{{ $jkr -> fjxx-> zyxx_zt }}',
-        lxrxx_zt: '{{ $jkr -> fjxx-> lxrxx_zt }}',qtxx_zt: '{{ $jkr -> fjxx-> qtxx_zt }}',fjxx_zt: '{{ $jkr -> fjxx-> fjxx_zt }}',created_at: '{{ $jkr -> created_at }}',updated_at: '{{ $jkr -> updated_at }}'})
+        vm.jkr.push({id: '{{ $jkr -> id }}', name: '{{ $jkr -> name }}',jklb: '{{ $jkr -> jklb }}',addr: '{{ $jkr -> addr }}',jbxx_zt: '{{ $jkr -> fjxx-> jbxx_zt . ":" . $jkr -> fjxx -> jbxx_yj }}',zyxx_zt: '{{ $jkr -> fjxx-> zyxx_zt. ":" . $jkr -> fjxx -> zyxx_yj  }}',
+        lxrxx_zt: '{{ $jkr -> fjxx-> lxrxx_zt. ":" . $jkr -> fjxx -> lxrbxx_yj  }}',qtxx_zt: '{{ $jkr -> fjxx-> qtxx_zt. ":" . $jkr -> fjxx -> qtxx_yj  }}',fjxx_zt: '{{ $jkr -> fjxx-> fjxx_zt . ":" . $jkr -> fjxx -> fjxx_yj }}',created_at: '{{ $jkr -> created_at }}',updated_at: '{{ $jkr -> updated_at }}',
+        khjl: '{{ $jkr->fjxx->khjl }}' })
     @endforeach
 
 @stop

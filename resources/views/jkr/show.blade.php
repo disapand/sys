@@ -69,6 +69,10 @@
                                     <el-input v-model="jbxx.addr"></el-input>
                                 </el-form-item>
 
+                                <el-form-item label="客户经理" prop="khjl">
+                                    <el-input v-model="jbxx.khjl"></el-input>
+                                </el-form-item>
+
                                 @if(\Illuminate\Support\Facades\Auth::user() -> role === '业务员')
                                     <el-steps :active="activeStep" finish-status="success" align-center
                                               style="margin: 20px 0;">
@@ -593,6 +597,7 @@
     vm.jbxx.xl= '{{ urldecode($jbxx -> xl) }}'
     vm.jbxx.hj= '{{ urldecode($jbxx -> hj) }}'
     vm.jbxx.addr= '{{ urldecode($jbxx -> addr) }}'
+    vm.jbxx.khjl= '{{ urldecode($jbxx -> fjxx -> khjl) }}'
     vm.jbxx.gzdw= '{{ urldecode($jbxx ->zyxx -> gzdw) }}',
     vm.jbxx.dwxz= '{{ urldecode($jbxx ->zyxx -> dwxz) }}',
     vm.jbxx.sshy= '{{ urldecode($jbxx ->zyxx -> sshy) }}',

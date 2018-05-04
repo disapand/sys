@@ -36,5 +36,7 @@ Route::post('/jkCreate', 'jkController@store') -> name('jkCreate');
 Route::get('/jkList', 'jkController@list') -> name('jkList');
 Route::get('/jkQuery/{condition?}/queryString/{queryString?}', 'jkController@query') -> name('jkQuery');
 Route::get('/jkShow/{jk}', 'jkController@show') -> name('jkShow');
+Route::get('/jkEdit/{jk}', 'jkController@edit') -> name('jkEdit');
+Route::post('/jkUpdate/{jk}', 'jkController@update') -> name('jkUpdate');
 
 Route::post('/hkCreate', 'hkController@create') -> name('hkCreate');

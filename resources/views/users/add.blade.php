@@ -30,6 +30,8 @@
                         <el-select v-model="user.role" placeholder="请选择角色类型" style="width: 100%">
                             <el-option label="业务员" value="业务员"></el-option>
                             <el-option label="审核员" value="审核员"></el-option>
+                            <el-option label="客服" value="客服"></el-option>
+                            <el-option label="财务" value="财务"></el-option>
                         </el-select>
                     </el-form-item>
 

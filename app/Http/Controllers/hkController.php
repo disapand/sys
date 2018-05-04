@@ -8,6 +8,6 @@ class hkController extends Controller
 {
 
     public function create(Request $request){
-        return response() -> json($request -> all());
+        return response() -> json(['statue' => 'success', 'dd' => $request -> all()]);
     }
 }

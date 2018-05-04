@@ -64,6 +64,10 @@
                                     <el-input v-model="jbxx.addr"></el-input>
                                 </el-form-item>
 
+                                <el-form-item label="客户经理" prop="khjl">
+                                    <el-input v-model="jbxx.khjl"></el-input>
+                                </el-form-item>
+
                                 {{--<el-form-item>--}}
                                     {{--<el-button type="primary" @click="onSubmitPost('{{ route('jbxxCreate') }}', jbxx)">确认提交</el-button>--}}
                                     <el-steps :active="activeStep" finish-status="success" align-center style="margin: 20px 0;">

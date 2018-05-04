@@ -102,6 +102,7 @@
                     gmjg: '',
                     gmfs: '',
                     gmdz: '',
+                    khjl: '',
                     fjxx: [],
                 },
                 sh: {
@@ -128,18 +129,6 @@
                     addr: [
                         {required: true, message: '请输入住宅地址', trigger: 'blur'}
                     ],
-                    /*                    rzsj:[
-                                            {required: true, message:'请选择入职时间', trigger:'change'}
-                                        ],
-                                        dwdz:[
-                                            {required: true, message:'请输入单位地址', trigger:'blur'}
-                                        ],
-                                        dwdh:[
-                                            {required: true, message:'请输入单位电话', trigger:'blur'}
-                                        ],
-                                        rzxs:[
-                                            {required: true, message:'请输入任职薪水', trigger:'blur'}
-                                        ],*/
                     zsr: [
                         {required: true, message: '请输入总收入', trigger: 'blur'}
                     ],
@@ -148,6 +137,9 @@
                     ],
                     sfzh: [
                         {min: 18, max: 18, message: '请输入正确的身份证号', trigger: 'blur'}
+                    ],
+                    khjl:[
+                        {required: true, message: '请填写客户经理信息', trigger: 'blur'}
                     ]
                 },
                 user: {
@@ -336,10 +328,12 @@
             imgUploadError(response, file, fileList) {
                 vm.$message(response)
             },
+            //修改对应行的颜色
             tableRowClassName({row, rowIndex}) {
-                if (row.jbxx_zt == '审核不通过' || row.zyxx_zt == '审核不通过' || row.lxrxx_zt == '审核不通过' || row.qtxx_zt == '审核不通过' || row.fjxx_zt == '审核不通过') {
+                console.log(row.jbxx_zt.indexOf('审核通过'))
+                if (row.jbxx_zt.indexOf('审核不通过') > -1 || row.zyxx_zt.indexOf('审核不通过') > -1  || row.lxrxx_zt.indexOf('审核不通过') > -1 || row.qtxx_zt.indexOf('审核不通过') > -1 || row.fjxx_zt.indexOf('审核不通过') > -1) {
                     return 'warning-row'
-                } else if (row.jbxx_zt == '审核通过' && row.zyxx_zt == '审核通过' && row.lxrxx_zt == '审核通过' && row.qtxx_zt == '审核通过' && row.fjxx_zt == '审核通过') {
+                } else if (row.jbxx_zt.indexOf('审核通过') > -1 && row.zyxx_zt.indexOf('审核通过') > -1 && row.lxrxx_zt.indexOf('审核通过') > -1 && row.qtxx_zt.indexOf('审核通过') > -1 && row.fjxx_zt.indexOf('审核通过') > -1 ) {
                     return 'success-row'
                 }
             },
@@ -365,7 +359,9 @@
                     })
                 })
             },
-
+            back() {
+                history.back(-1)
+            },
         },
 
         computed: {

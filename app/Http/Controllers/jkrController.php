@@ -30,6 +30,7 @@ class jkrController extends Controller
         }
 
         if (isset($request->name) && isset($request->tel) && isset($request->IDCard) && isset($request->sex) && isset($request->jklb) && isset($request->addr)
+            && isset($request->zsr) && isset($request->khjl)
 //            && isset($request->rzsj) && isset($request->dwdz) && isset($request->dwdh) && isset($request->rzxs) &&isset($request->zsr)
         ) {
             $fjxx_tostring = '';
@@ -97,6 +98,7 @@ class jkrController extends Controller
                 'jbxx_id' => $tmp -> id,
                 'tjr' => Auth::user() -> id,
                 'fjxx' => $fjxx_tostring,
+                'khjl' => $request -> khjl,
             ]);
             return response() -> json(['statue' => 'success', 'dd' => '信息添加成功，请前往借款人列表查看']);
         }else {
@@ -106,8 +108,13 @@ class jkrController extends Controller
     }
 
     public function list() {
-        $jkrs = jbxx::paginate(9);
-
+        if (Auth::user() -> role == '客服') {
+            $jkrs = jbxx::paginate(9);
+        } else {
+            $jkrs = jbxx::whereHas('fjxx', function ($query) {
+                $query -> where('tjr', Auth::user() -> id);
+            }) -> paginate(9);
+        }
         return view('jkr.list', compact('jkrs'));
     }
 
@@ -181,6 +188,7 @@ class jkrController extends Controller
 
         $fjxx = fjxx::where('jbxx_id', $jbxx -> id) -> first();
         $fjxx -> fjxx = $fjxx_tostring;
+        $fjxx -> khjl = $request -> khjl;
 
         $jbxx -> save();
         $zyxx -> save();

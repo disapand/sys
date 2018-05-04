@@ -9,7 +9,7 @@
             <el-card>
                 <div slot="header" class="clearfix">
                     <span>借款信息</span>
-                    <el-button style="float:right" type="primary" @click="tzlj()">编辑</el-button>
+                    <el-button style="float:right" type="primary" @click="tzlj('{{ route('jkEdit', [$jk -> id]) }}')">编辑</el-button>
                 </div>
                 <el-row style="padding: 20px;background-color: rgba(200,200,200,.6); border-radius: 5px;">
                     <el-col :span="6">借款编号</el-col>
