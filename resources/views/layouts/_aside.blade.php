@@ -38,8 +38,7 @@
                     <i class="el-icon-location"></i>
                     <span>还款管理</span>
                 </template>
-                <el-menu-item index="3-1">添加还款</el-menu-item>
-                <el-menu-item index="3-2">还款列表</el-menu-item>
+                <el-menu-item index="3-2" @click="tzlj(' {{ route('hkShow') }}')">还款列表</el-menu-item>
             </el-submenu>
         </el-menu>
     </el-col>

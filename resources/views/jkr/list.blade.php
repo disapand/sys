@@ -23,7 +23,8 @@
         </el-input>
     </div>
 
-    <a href="#" class="btn btn-primary" style="margin-left: 20px;" download="借款人列表.xls" onclick="return ExcellentExport.excel(this, 'jkr', '借款人列表');">导出excel</a>
+    <a href="#" class="btn btn-primary" style="margin-right: 50px;margin-top: 15px;float: right;"
+       download="借款人列表.xls" onclick="return ExcellentExport.excel(this, 'jkr', '借款人列表');">导出excel</a>
 
     <template>
         <el-row :gutter="10">

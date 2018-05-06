@@ -62,5 +62,14 @@
 @section('script_vue')
 
     vm.activeIndex = '2-2'
+    @foreach( $hk_list as $l )
+        vm.hk_list.push({
+            id: '{{ $l['id'] }}',
+            hkje: '{{ $l['hkje'] }}元',
+            hksj: '{{ $l['hksj'] }}',
+            khjl: '{{ $l['khjl'] }}',
+            whje: '{{ $l['whje'] }}元',
+        })
+    @endforeach
 
 @stop

@@ -8,7 +8,7 @@ class jk extends Model
 {
 
     protected $fillable = [
-      'jbxx_id', 'jklx', 'hth', 'jkqx', 'jkje', 'll', 'sxf', 'jksj', 'hkfs',  'tjr'
+      'jbxx_id','hk_id', 'jklx', 'hth', 'jkqx', 'jkje', 'll', 'sxf', 'jksj', 'hkfs',  'tjr'
     ];
 
     public function jbxx() {
@@ -17,6 +17,10 @@ class jk extends Model
 
     public function user() {
         return $this -> belongsTo('App\Models\User', 'tjr', 'id');
+    }
+
+    public function hk() {
+        return $this -> hasMany('App\Models\hk', 'jkbh', 'id');
     }
 
 }

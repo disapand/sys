@@ -39,4 +39,8 @@ Route::get('/jkShow/{jk}', 'jkController@show') -> name('jkShow');
 Route::get('/jkEdit/{jk}', 'jkController@edit') -> name('jkEdit');
 Route::post('/jkUpdate/{jk}', 'jkController@update') -> name('jkUpdate');
 
-Route::post('/hkCreate', 'hkController@create') -> name('hkCreate');
+Route::post('/hkCreate/{jk}', 'hkController@create') -> name('hkCreate');
+Route::get('/hkShow', 'hkController@show') -> name('hkShow');
+Route::get('/hkEdit/{hk}', 'hkController@edit') -> name('hkEdit');
+Route::post('/hkUpdate/{hk}', 'hkController@update') -> name('hkUpdate');
+

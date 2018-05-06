@@ -206,6 +206,9 @@
                     hkje:'',
                     bj:'',
                     lx:'',
+                    khjl:'',
+                    whje: '',
+                    hksj: '',
                 },
                 hkxxRules:{
                     hkje:[
@@ -217,7 +220,11 @@
                     lx:[
                         {required: true, message:'请输入本次还款利息', trigger: 'blur'}
                     ],
+                    khjl:[
+                        {required: true, message:'请输入客户经理', trigger: 'blur'}
+                    ],
                 },
+                hklb:[],
             }
         },
         methods: {
@@ -238,6 +245,7 @@
                                 type: msg.statue
                             })
                             vm.$refs[tmp].resetFields()
+                            window.location.href = document.referrer
                             {{--if (tmp == 'jbxx') {--}}
                                 {{--window.location.href({{ route('jkrList') }})--}}
                             {{--}--}}
@@ -270,7 +278,8 @@
                                 message: msg.dd,
                                 type: msg.statue
                             })
-                            window.location.reload()
+                            // window.location.reload()
+                            history.back(-1)
                         })
                     }).catch(() => {
                         vm.$message({

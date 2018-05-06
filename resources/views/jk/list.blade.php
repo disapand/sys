@@ -119,10 +119,15 @@
             jksj: '{{ $j -> jksj }}',
             jkqx: '{{ $j -> jkqx }}个月',
             dqsj: '{{ \Carbon\Carbon::createFromFormat('Y-m-d', $j -> jksj)->addMonths($j->jkqx) -> toDateString() }}',
-            zlx: '',
+            yhlx: '{{ $j -> hk -> sum('lx') }}元',
+            zlx: '{{ round($j -> jkje * ($j -> ll / 100), 2) }}',
             ll: '{{ $j -> ll }}%',
             sxf: '{{ $j -> sxf }}%',
-            sfyh: '',
+            @if( !$j -> hk -> isEmpty())
+                sfyh: '是',
+            @else
+                sfyh: '否',
+            @endif
             hkfs: '{{ $j -> hkfs }}',
         });
     @endforeach

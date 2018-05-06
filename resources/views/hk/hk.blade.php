@@ -4,7 +4,8 @@
         <el-card>
             <div slot="header" class="clearfix">
                 <span>还款信息</span>
-                {{--<el-button style="float:right" type="primary" @click="tzlj()">编辑</el-button>--}}
+                {{-- 管理员可以编辑还款信息 --}}
+                {{--<el-button style="float:right" type="primary" @click="tzlj('{{ route('hkEdit', [$jk -> id]) }}')">编辑</el-button>--}}
             </div>
             <template>
                 <el-table
@@ -16,22 +17,39 @@
                             label="还款编号">
                     </el-table-column>
                     <el-table-column
-                            prop="hkqs"
-                            label="还款期数">
+                            prop="hkje"
+                            label="还款金额">
                     </el-table-column>
                     <el-table-column
-                            prop="hkbj"
-                            label="已还本金">
+                            prop="hksj"
+                            label="还款时间">
                     </el-table-column>
                     <el-table-column
-                            prop="hklx"
-                            label="已还利息">
+                            prop="whje"
+                            label="未还金额">
                     </el-table-column>
+                    <el-table-column
+                            prop="khjl"
+                            label="客户经理">
+                    </el-table-column>
+
+                    @if(\Illuminate\Support\Facades\Auth::user() -> role == '业务员')
+                        <el-table-column label="操作">
+                            <template slot-scope="scope">
+                                <el-button
+                                        size="mini"
+                                        type="primary"
+                                        @click="onSubmit(' {{ url('/hkEdit') }}', scope.row.id, 'show')">编辑还款信息
+                                </el-button>
+                            </template>
+                        </el-table-column>
+                    @endif
+
                 </el-table>
             </template>
 
             <el-row style="margin-top: 50px;">
-                <el-form :inline="true" :model="hkxx" :rules="hkxxRules" ref="hkxx">
+                <el-form :inline="true" :model="hkxx" :rules="hkxxRules" ref="hkxx" size="mini">
                     <div>
                         <el-form-item label="还款金额" prop="hkje">
                             <el-input v-model="hkxx.hkje">
@@ -48,8 +66,12 @@
                                 <template slot="append">元</template>
                             </el-input>
                         </el-form-item>
+                        <el-form-item label="客户经理" prop="khjl">
+                            <el-input v-model="hkxx.khjl" placeholder="请输入客户经理">
+                            </el-input>
+                        </el-form-item>
                         <el-form-item>
-                            <el-button type="primary" @click="onSubmitPost('{{ route('hkCreate') }}', hkxx, 'hkxx')">添加还款信息</el-button>
+                            <el-button type="primary" @click="onSubmitPost('{{ url('/hkCreate') .'/'. $jk -> id }}', hkxx, 'hkxx')">添加还款信息</el-button>
                         </el-form-item>
                     </div>
                 </el-form>

@@ -92,7 +92,6 @@
                         </el-col>
                     </el-row>
 
-
                     <el-form-item label="借款时间" prop="jksj">
                         <el-date-picker
                                 v-model="jk.jksj"

@@ -201,12 +201,18 @@ class jkrController extends Controller
     public function query($condition = '', $queryString = '') {
         $jkrs = [];
         if ( $queryString == '' ) {
-            $jbxxs = jbxx::all();
+            $jbxxs = jbxx::whereHas('fjxx', function($q) {
+                $q -> where('tjr', Auth::user() -> id);
+            }) -> get();
         }else {
             if ($condition != '借款人姓名') {
-                $jbxxs = jbxx::where( 'id', $queryString) -> get();
+                $jbxxs = jbxx::whereHas('fjxx', function($q){
+                    $q -> where('tjr', Auth::user() -> id);
+                }) -> where( 'id', $queryString) -> get();
             } else {
-                $jbxxs = jbxx::where('name' , 'like' ,'%'.$queryString.'%') -> get();
+                $jbxxs = jbxx::whereHas('fjxx', function($q){
+                    $q -> where('tjr', Auth::user() -> id);
+                }) -> where('name' , 'like' ,'%'.$queryString.'%') -> get();
             }
         }
 
