@@ -108,7 +108,7 @@ class jkrController extends Controller
     }
 
     public function list() {
-        if (Auth::user() -> role == '客服') {
+        if (Auth::user() -> role != '业务员') {
             $jkrs = jbxx::paginate(9);
         } else {
             $jkrs = jbxx::whereHas('fjxx', function ($query) {

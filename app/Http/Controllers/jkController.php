@@ -39,7 +39,7 @@ class jkController extends Controller
 
     public function list() {
 
-        if (Auth::user() -> role == '营业员' || Auth::user() -> role == '财务' || Auth::user() -> role == '管理员') {
+        if (Auth::user() -> role == '客服' || Auth::user() -> role == '财务' || Auth::user() -> role == '管理员') {
             $js = jk::paginate(9);
         } else {
             $js = jk::where('tjr', Auth::user() -> id) -> paginate(9);

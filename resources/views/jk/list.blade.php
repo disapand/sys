@@ -3,7 +3,7 @@
 @section('content')
     @include('shared._errors_vue')
 
-    <div style="margin: 15px auto; width: 50%">
+    <div style="margin: 15px auto; width: 50%;display: inline-block">
         <el-input placeholder="请输入内容" v-model="query_string" class="input-with-select">
             <el-select v-model="query_condition" slot="prepend" placeholder="请选择" style="width: 130px;">
                 <el-option label="借款人姓名" value="借款人姓名"></el-option>
@@ -13,9 +13,13 @@
         </el-input>
     </div>
 
+    <a href="#" class="btn btn-primary" style="margin-right: 50px;margin-top: 15px;float: right;"
+       download="借款列表.xls" onclick="return ExcellentExport.excel(this, 'jk', '借款列表');">导出excel</a>
+
     <template>
         <el-row :gutter="10">
             <el-table
+                    id="jk"
                     :data="jk_hk"
                     style="width: 100%;"
                     stripe
@@ -103,6 +107,16 @@
         </el-row>
     </template>
 
+    <el-row style="margin-top: 20px;">
+        <el-col :span="8">
+            {{ $js -> links() }}
+        </el-col>
+    </el-row>
+
+@stop
+
+@section('script')
+    <script src="{{ asset('/js/excellentexport.js') }}"></script>
 @stop
 
 @section('script_vue')

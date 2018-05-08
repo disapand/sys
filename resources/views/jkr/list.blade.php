@@ -113,7 +113,7 @@
                 </el-table-column>
             </el-table>
 
-            <el-row type="flex" justify="center" style="margin-top: 20px;">
+            <el-row style="margin-top: 20px;">
                 <el-col :span="8">
                     {{ $jkrs -> links() }}
                 </el-col>

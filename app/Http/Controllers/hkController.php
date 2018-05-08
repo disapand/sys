@@ -35,9 +35,14 @@ class hkController extends Controller
     }
 
     public function show() {
-        $hk = hk::whereHas('jk', function($q) {
-          $q -> where('tjr', Auth::user() -> id);
-        } ) -> get();
+        if (Auth::user() -> role == '客服' || Auth::user() -> role == '财务' || Auth::user() -> role == '管理员') {
+            $hk = hk::paginate(9);
+        }else{
+            $hk = hk::whereHas('jk', function($q) {
+                $q -> where('tjr', Auth::user() -> id);
+            } ) -> paginate(9);
+        }
+
 
         return view('hk.list', compact('hk'));
     }
