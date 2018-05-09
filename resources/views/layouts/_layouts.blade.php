@@ -347,10 +347,11 @@
                 }
             },
             query_jkr() {
-                $.get("{{ url('/jkrQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string, function (data, statue) {
-                    vm.jkr = data
-                    console.log(data)
-                })
+                window.location.href = "{{ url('/jkrQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string
+                {{--$.get("{{ url('/jkrQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string, function (data, statue) {--}}
+                    {{--vm.jkr = data--}}
+                    {{--console.log(data)--}}
+                {{--})--}}
             },
             query_jk() {
                 $.get("{{ url('/jkQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string, function (data, statue) {

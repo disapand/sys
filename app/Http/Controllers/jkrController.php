@@ -199,7 +199,7 @@ class jkrController extends Controller
     }
 
     public function query($condition = '', $queryString = '') {
-        $jkrs = [];
+        /*$jkrs = [];
         if ( $queryString == '' ) {
             $jbxxs = jbxx::whereHas('fjxx', function($q) {
                 $q -> where('tjr', Auth::user() -> id);
@@ -220,7 +220,36 @@ class jkrController extends Controller
             array_push($jkrs ,array_merge($jbxx -> toArray(), $jbxx->fjxx -> toArray(),$jbxx->zyxx -> toArray(),$jbxx->lxrxx -> toArray(),$jbxx->qtxx -> toArray()));
         }
 
-        return response() -> json($jkrs);
+        return response() -> json($jkrs);*/
+
+        if (Auth::user() -> role == '业务员') {
+            if ($queryString == '') {
+                return redirect() -> route('jkrList');
+            } else {
+                if ($condition != '借款人姓名') {
+                    $jkrs = jbxx::whereHas('fjxx', function ($q) {
+                        $q -> where('tjr', Auth::user() -> id);
+                    }) -> where('id', $queryString) -> paginate(9);
+                } else {
+                    $jkrs = jbxx::whereHas('fjxx', function ($q) {
+                        $q -> where('tjr', Auth::user() -> id);
+                    }) -> where('name','like', '%' . $queryString. '%') -> paginate(9);
+                }
+            }
+        } else {
+            if ($queryString == '') {
+                return redirect() -> route('jkrList');
+            } else {
+                if ($condition != '借款人姓名') {
+                    $jkrs = jbxx::where('id', $queryString) -> paginate(9);
+                } else {
+                    $jkrs = jbxx::where('name', 'like', '%' . $queryString . '%') -> paginate(9);
+                }
+            }
+        }
+
+        return view('jkr.list', compact('jkrs'));
+
     }
 
     public function sh($shyj = '', jbxx $jbxx,  $sort, $zt = '审核不通过', Request $request) {

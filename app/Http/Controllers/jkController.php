@@ -32,6 +32,10 @@ class jkController extends Controller
             'jksj' => $request -> jksj,
             'hkfs' => $request -> hkfs,
             'tjr' => Auth::user() -> id,
+            'dqsj' => Carbon::createFromFormat('Y-m-d', $request -> jksj) -> addMonths($request -> jkqx) -> toDateString(),
+            'zlx' => round(($request -> jkje * $request -> ll / 100),2),
+            'yhlx' => '0',
+            'sfyh' => '否',
         ]);
 
         return response() -> json(['statue' => 'success', 'dd' => '信息添加成功']);
@@ -49,6 +53,7 @@ class jkController extends Controller
     }
 
     public function query($condition = '', $queryString = '') {
+
         $jks = [];
         if ( $queryString == '' ) {
             $jkxxs = jk::where('tjr', Auth::user() -> id) -> get();

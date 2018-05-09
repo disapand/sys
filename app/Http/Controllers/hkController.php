@@ -16,8 +16,12 @@ class hkController extends Controller
 
         //未还金额的设置
         $whje = round($jk -> jkje * ( 1 + $jk -> ll / 100), 2);
-        $yhje = hk::where('jkbh', $jk -> id) -> sum('hkje');
+        $yhje = $jk -> yhje;
         $whje = $whje - $yhje - $request -> hkje;
+
+        $jk -> yhje += $request -> hkje;
+        $jk -> sfyh = '是';
+
         $hkje = $request -> hkje;
         $bj = $request -> bj;
         $lx = $request -> lx;
