@@ -354,10 +354,14 @@
                 {{--})--}}
             },
             query_jk() {
-                $.get("{{ url('/jkQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string, function (data, statue) {
-                    vm.jk_hk = data
-                    console.log(data)
-                })
+                window.location.href = "{{ url('/jkQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string
+                {{--$.get("{{ url('/jkQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string, function (data, statue) {--}}
+                    {{--vm.jk_hk = data--}}
+                    {{--console.log(data)--}}
+                {{--})--}}
+            },
+            query_hk() {
+                window.location.href = "{{ url('/hkQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string
             },
             tjsh(jbxx, data, sort, zt){
                 $.post("{{ url('/jkrSh') }}" + "/" + vm.sh.shyj + "/jbxx/" + jbxx +  "/sort/" + sort + "/zt/" + zt, data, function (data, statue) {

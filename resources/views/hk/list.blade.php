@@ -9,7 +9,7 @@
                 <el-option label="借款人姓名" value="借款人姓名"></el-option>
                 <el-option label="借款编号" value="借款人编号"></el-option>
             </el-select>
-            <el-button slot="append" icon="el-icon-search" @click="query_jk">搜索</el-button>
+            <el-button slot="append" icon="el-icon-search" @click="query_hk">搜索</el-button>
         </el-input>
     </div>
 

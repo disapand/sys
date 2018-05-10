@@ -66,4 +66,38 @@ class hkController extends Controller
         return response() -> json(['statue' => 'success', 'dd' => '还款信息更新成功']);
     }
 
+    public function query($condition = '', $queryString = '') {
+        if ($queryString == '') {
+            return redirect()->route('hkShow');
+        } else {
+            if (Auth::user()->role != '业务员' ) {
+                if ($condition == '借款人姓名') {
+                    $hk = hk::whereHas('jk', function($q) use ($queryString) {
+                        $q->whereHas('jbxx', function($query) use ($queryString){
+                           $query->where('name', 'like',  '%' . $queryString . '%');
+                        });
+                    })->paginate(9);
+                } else {
+                    $hk = hk::whereHas('jk', function($q) use ($queryString){
+                        $q->where('id', $queryString);
+                    })->paginate(9);
+                }
+            } else {
+                if ($condition == '借款人姓名') {
+                    $hk = hk::whereHas('jk', function($q) use ($queryString) {
+                        $q->whereHas('jbxx', function($query) use ($queryString){
+                            $query->where('name', 'like',  '%' . $queryString . '%');
+                        })->where('tjr', Auth::user()->id);
+                    })->paginate(9);
+                } else {
+                    $hk = hk::whereHas('jk', function($q) use ($queryString){
+                        $q->where('id', $queryString)->where('tjr', Auth::user()->id);
+                    })->paginate(9);
+                }
+            }
+        }
+
+        return view('hk.list', compact('hk'));
+    }
+
 }

@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class jkController extends Controller
 {
-
     public function create() {
         $users = fjxx::where('fjxx_zt', '审核通过')->get();
         return view('jk.create', compact('users'));
@@ -54,42 +53,29 @@ class jkController extends Controller
 
     public function query($condition = '', $queryString = '') {
 
-        $jks = [];
-        if ( $queryString == '' ) {
-            $jkxxs = jk::where('tjr', Auth::user() -> id) -> get();
-        }else {
-            if ($condition != '借款人姓名') {
-                $jkxxs = jk::where( 'id', $queryString) -> where('tjr', Auth::user() -> id) -> get();
+        if ($queryString == '') {
+            return redirect()->route('jkList');
+        } else {
+            if (Auth::user()->role != '业务员' ) {
+                if ($condition == '借款人姓名') {
+                    $js = jk::whereHas('jbxx', function($q) use ($queryString) {
+                        $q->where('name', 'like',  '%' . $queryString . '%');
+                    })->paginate(9);
+                } else {
+                    $js = jk::where('id', $queryString)->paginate(9);
+                }
             } else {
-                $user_name_to_id = jbxx::where('name', $queryString) -> get();
-            }
-        }
-
-        if (isset($jkxxs)) {
-            foreach ($jkxxs as $jkxx) {
-                array_push($jks ,array_merge($jkxx->jbxx -> toArray() ,$jkxx -> toArray(),
-                    ['dqsj' => Carbon::createFromFormat('Y-m-d', $jkxx -> jksj) -> addMonths($jkxx -> jkqx) -> toDateString()]));
-            }
-        }
-
-        if (isset($user_name_to_id)) {
-            foreach ($user_name_to_id as $id) {
-                $t = jk::where('jbxx_id', $id -> id) -> where('tjr', Auth::user() -> id)->get();
-                foreach ($t as $i) {
-                    $sfyh = '否';
-                    if (!$i -> hk -> isEmpty())
-                        $sfyh = '是';
-                    array_push($jks ,array_merge($id -> toArray(), $i -> toArray(),
-                        ['dqsj' => Carbon::createFromFormat('Y-m-d', $i -> jksj) -> addMonths($i -> jkqx) -> toDateString(),
-                            'zlx' => round($i -> jkje * $i -> ll /100, 2) . '元',
-                            'sfyh' => $sfyh,
-                            'yhlx' => $i -> hk -> sum('lx') . '元'
-                        ]));
+                if ($condition == '借款人姓名') {
+                    $js = jk::whereHas('jbxx', function($q) use ($queryString) {
+                        $q->where('name', 'like',  '%' . $queryString . '%');
+                    })->where('tjr', Auth::user()->id)->paginate(9);
+                } else {
+                    $js = jk::where('id', $queryString)->where('tjr', Auth::user()->id)->paginate(9);
                 }
             }
         }
 
-        return response() -> json($jks);
+        return view('jk.list', compact('js'));
     }
 
     public function show(jk $jk){
@@ -98,7 +84,7 @@ class jkController extends Controller
         $yhje = $hk -> count();
         $hk_list = [];
         foreach ($hk as $t) {
-            array_push($hk_list, array_merge($t -> toArray(), ['jkr' => $t -> jk -> jbxx -> name, ]));
+            array_push($hk_list, array_merge($t->toArray(), ['jkr' => $t -> jk -> jbxx -> name]));
         }
 
         return view('jk.show', compact('jk', 'hk_list'));
