@@ -13,7 +13,7 @@
             </el-menu-item>
             <el-menu-item index="1">
                 <i class="el-icon-menu"></i>
-                <span slot="title" @click="">首页</span>
+                <span slot="title" @click="tzlj('{{route('dashboard')}}')">首页</span>
             </el-menu-item>
             <el-submenu index="2">
                 <template slot="title">

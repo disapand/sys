@@ -45,3 +45,4 @@ Route::get('/hkEdit/{hk}', 'hkController@edit') -> name('hkEdit');
 Route::post('/hkUpdate/{hk}', 'hkController@update') -> name('hkUpdate');
 Route::get('/hkQuery/{condition?}/queryString/{queryString?}', 'hkController@query') -> name('hkQuery');
 
+Route::get('/dashboard', 'indexController@dashboard')->name('dashboard');

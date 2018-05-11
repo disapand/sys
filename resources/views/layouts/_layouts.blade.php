@@ -17,8 +17,8 @@
         .el-header {
             padding: 0;
         }
-        @yield('css')
     </style>
+    @yield('css')
 
 </head>
 <body style="height: 100%;width: 100%">
