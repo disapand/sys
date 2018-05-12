@@ -21,6 +21,7 @@ class hkController extends Controller
 
         $jk -> yhje += $request -> hkje;
         $jk -> sfyh = '是';
+        $jk -> yhlx += $request->yhlx;
 
         $hkje = $request -> hkje;
         $bj = $request -> bj;
@@ -35,6 +36,7 @@ class hkController extends Controller
             'khjl' => $khjl,
             'whje' => $whje,
         ]);
+        $jk->save();
         return response() -> json(['statue' => 'success', 'dd' => '还款信息添加成功']);
     }
 

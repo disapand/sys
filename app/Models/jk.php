@@ -8,7 +8,7 @@ class jk extends Model
 {
 
     protected $fillable = [
-      'jbxx_id','hk_id', 'jklx', 'hth', 'jkqx', 'jkje', 'll', 'sxf', 'jksj', 'hkfs', 'tjr','dqsj','zlx','yhlx','sfyh'
+      'jbxx_id','hk_id', 'jklx', 'hth', 'jkqx', 'jkje', 'll', 'sxf', 'jksj', 'hkfs', 'tjr','dqsj','zlx','yhlx','sfyh','yhje'
     ];
 
     public function jbxx() {

@@ -23,6 +23,7 @@
                     :data="jk_hk"
                     style="width: 100%;"
                     stripe
+                    :row-class-name="tableRowClassName1"
                     :default-sort = "{prop: 'id', order: 'ascending'}">
                 <el-table-column
                         prop="id"

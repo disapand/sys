@@ -46,3 +46,5 @@ Route::post('/hkUpdate/{hk}', 'hkController@update') -> name('hkUpdate');
 Route::get('/hkQuery/{condition?}/queryString/{queryString?}', 'hkController@query') -> name('hkQuery');
 
 Route::get('/dashboard', 'indexController@dashboard')->name('dashboard');
+Route::get('/jkr_query/{query?}', 'indexController@jkr')->name('jkr_query');
+Route::get('/jk_query/{query?}', 'indexController@jk')->name('jk_query');

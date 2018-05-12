@@ -346,6 +346,9 @@
                     return 'success-row'
                 }
             },
+            tableRowClassName1({row, rowIndex}){
+                console.log(row.dqsj)
+            },
             query_jkr() {
                 window.location.href = "{{ url('/jkrQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string
                 {{--$.get("{{ url('/jkrQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string, function (data, statue) {--}}
