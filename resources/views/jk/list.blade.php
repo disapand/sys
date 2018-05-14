@@ -1,5 +1,17 @@
 @extends('layouts._layouts')
 
+@section('css')
+    <style>
+        .el-table .warning-row {
+            background: #F56C6C;
+        }
+
+        .el-table .success-row {
+            background: #67C23A;
+        }
+    </style>
+@stop
+
 @section('content')
     @include('shared._errors_vue')
 

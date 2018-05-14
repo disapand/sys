@@ -48,3 +48,5 @@ Route::get('/hkQuery/{condition?}/queryString/{queryString?}', 'hkController@que
 Route::get('/dashboard', 'indexController@dashboard')->name('dashboard');
 Route::get('/jkr_query/{query?}', 'indexController@jkr')->name('jkr_query');
 Route::get('/jk_query/{query?}', 'indexController@jk')->name('jk_query');
+Route::get('/yqcx', 'indexController@yqcx')->name('yqcx');
+Route::get('/wsh', 'indexController@wsh')->name('wsh');

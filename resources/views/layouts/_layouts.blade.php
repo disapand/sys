@@ -347,7 +347,9 @@
                 }
             },
             tableRowClassName1({row, rowIndex}){
-                console.log(row.dqsj)
+                if(new Date() >= new Date(Date.parse(row.dqsj)) && row.sfyh == '否'){
+                    return 'warning-row'
+                }
             },
             query_jkr() {
                 window.location.href = "{{ url('/jkrQuery')}}" + "/" + vm.query_condition + "/queryString/" + vm.query_string
