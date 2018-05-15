@@ -17,7 +17,7 @@ class CreateJbxxesTable extends Migration
             $table->increments('id') -> index();
             $table->string('name');
             $table->string('tel');
-            $table->string('IDCard') -> index();
+            $table->string('IDCard', 100) -> index();
             $table->string('sex');
             $table->string('jklb');
             $table->string('xl') -> nullable();
