@@ -27,18 +27,20 @@
     @include('shared._message_vue')
 
     {{--未审核客户数--}}
-    <el-card style="width: 15%;margin: 20px;display: inline-block;" shadow="hover">
-        <h4 slot="header" style="color: #3a8ee6">
-            待审核客户
-        </h4>
-        <el-row>
-            <el-col :span="24" style="text-align: center">
+    @if( \Illuminate\Support\Facades\Auth::user()->role == '审核员')
+        <el-card style="width: 15%;margin: 20px;display: inline-block;" shadow="hover">
+            <h4 slot="header" style="color: #3a8ee6">
+                待审核客户
+            </h4>
+            <el-row>
+                <el-col :span="24" style="text-align: center">
                 <span class="dashboard-num" style="font-size: 3em;">
                     <a href="{{ route('wsh') }}" style="color: #F56C6C; ">{{ $wsh }}</a>
                 </span>
-            </el-col>
-        </el-row>
-    </el-card>
+                </el-col>
+            </el-row>
+        </el-card>
+    @endif
 
     {{--新增客户数统计面板--}}
     <el-card style="width: 30%;margin: 20px;display: inline-block;" shadow="hover">
