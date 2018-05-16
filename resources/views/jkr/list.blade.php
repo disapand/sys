@@ -35,7 +35,6 @@
                     :data="jkr"
                     style="width: 100%;"
                     border
-                    :default-sort = "{prop: 'id', order: 'ascending'}"
                     :row-class-name="tableRowClassName">
                 <el-table-column
                         prop="id"

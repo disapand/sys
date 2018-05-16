@@ -22,8 +22,7 @@
                     id="hk"
                     :data="hklb"
                     style="width: 100%;"
-                    stripe
-                    :default-sort = "{prop: 'id', order: 'ascending'}">
+                    stripe>
                 <el-table-column
                         prop="id"
                         sortable

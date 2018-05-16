@@ -189,6 +189,7 @@
                                     <el-form-item label="和申请人关系">
                                         <el-select v-model="jbxx.gx" placeholder="请选择">
                                             <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="配偶" value="配偶"></el-option>
                                             <el-option label="朋友" value="朋友"></el-option>
                                             <el-option label="同事" value="同事"></el-option>
                                             <el-option label="其他" value="其他"></el-option>
@@ -201,6 +202,14 @@
 
                                     <el-form-item label="身份证号" prop="sfzh">
                                         <el-input v-model="jbxx.sfzh"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="居住地址" prop="lxrjzdz">
+                                        <el-input v-model="jbxx.lxrjzdz"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="工作单位" prop="lxrgzdw">
+                                        <el-input v-model="jbxx.lxrgzdw"></el-input>
                                     </el-form-item>
 
                                     <el-form-item label="联系人是否知道此贷款">
@@ -220,6 +229,7 @@
                                     <el-form-item label="和申请人关系">
                                         <el-select v-model="jbxx.gx2" placeholder="请选择">
                                             <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="配偶" value="配偶"></el-option>
                                             <el-option label="朋友" value="朋友"></el-option>
                                             <el-option label="同事" value="同事"></el-option>
                                             <el-option label="其他" value="其他"></el-option>
@@ -232,6 +242,14 @@
 
                                     <el-form-item label="身份证号" prop="sfzh">
                                         <el-input v-model="jbxx.sfzh2"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="居住地址" prop="lxrjzdz">
+                                        <el-input v-model="jbxx.lxrjzdz2"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="工作单位" prop="lxrgzdw">
+                                        <el-input v-model="jbxx.lxrgzdw2"></el-input>
                                     </el-form-item>
 
                                     <el-form-item label="联系人是否知道此贷款">
@@ -250,6 +268,7 @@
                                     <el-form-item label="和申请人关系">
                                         <el-select v-model="jbxx.gx3" placeholder="请选择">
                                             <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="配偶" value="配偶"></el-option>
                                             <el-option label="朋友" value="朋友"></el-option>
                                             <el-option label="同事" value="同事"></el-option>
                                             <el-option label="其他" value="其他"></el-option>
@@ -262,6 +281,14 @@
 
                                     <el-form-item label="身份证号" prop="sfzh">
                                         <el-input v-model="jbxx.sfzh3"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="居住地址" prop="lxrjzdz">
+                                        <el-input v-model="jbxx.lxrjzdz3"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="工作单位" prop="lxrgzdw">
+                                        <el-input v-model="jbxx.lxrgzdw3"></el-input>
                                     </el-form-item>
 
                                     <el-form-item label="联系人是否知道此贷款">
@@ -280,6 +307,7 @@
                                     <el-form-item label="和申请人关系">
                                         <el-select v-model="jbxx.gx4" placeholder="请选择">
                                             <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="配偶" value="配偶"></el-option>
                                             <el-option label="朋友" value="朋友"></el-option>
                                             <el-option label="同事" value="同事"></el-option>
                                             <el-option label="其他" value="其他"></el-option>
@@ -292,6 +320,14 @@
 
                                     <el-form-item label="身份证号" prop="sfzh">
                                         <el-input v-model="jbxx.sfzh4"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="居住地址" prop="lxrjzdz">
+                                        <el-input v-model="jbxx.lxrjzdz4"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="工作单位" prop="lxrgzdw">
+                                        <el-input v-model="jbxx.lxrgzdw4"></el-input>
                                     </el-form-item>
 
                                     <el-form-item label="联系人是否知道此贷款">

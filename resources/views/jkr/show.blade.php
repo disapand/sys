@@ -241,6 +241,7 @@
                                     <el-form-item label="和申请人关系">
                                         <el-select v-model="jbxx.gx" placeholder="请选择">
                                             <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="配偶" value="配偶"></el-option>
                                             <el-option label="朋友" value="朋友"></el-option>
                                             <el-option label="同事" value="同事"></el-option>
                                             <el-option label="其他" value="其他"></el-option>
@@ -253,6 +254,14 @@
 
                                     <el-form-item label="身份证号" prop="sfzh">
                                         <el-input v-model="jbxx.sfzh"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="居住地址" prop="lxrjzdz">
+                                        <el-input v-model="jbxx.lxrjzdz"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="工作单位" prop="lxrgzdw">
+                                        <el-input v-model="jbxx.lxrgzdw"></el-input>
                                     </el-form-item>
 
                                     <el-form-item label="联系人是否知道此贷款">
@@ -272,6 +281,7 @@
                                     <el-form-item label="和申请人关系">
                                         <el-select v-model="jbxx.gx2" placeholder="请选择">
                                             <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="配偶" value="配偶"></el-option>
                                             <el-option label="朋友" value="朋友"></el-option>
                                             <el-option label="同事" value="同事"></el-option>
                                             <el-option label="其他" value="其他"></el-option>
@@ -284,6 +294,14 @@
 
                                     <el-form-item label="身份证号" prop="sfzh">
                                         <el-input v-model="jbxx.sfzh2"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="居住地址" prop="lxrjzdz">
+                                        <el-input v-model="jbxx.lxrjzdz2"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="工作单位" prop="lxrgzdw">
+                                        <el-input v-model="jbxx.lxrgzdw2"></el-input>
                                     </el-form-item>
 
                                     <el-form-item label="联系人是否知道此贷款">
@@ -302,6 +320,7 @@
                                     <el-form-item label="和申请人关系">
                                         <el-select v-model="jbxx.gx3" placeholder="请选择">
                                             <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="配偶" value="配偶"></el-option>
                                             <el-option label="朋友" value="朋友"></el-option>
                                             <el-option label="同事" value="同事"></el-option>
                                             <el-option label="其他" value="其他"></el-option>
@@ -314,6 +333,14 @@
 
                                     <el-form-item label="身份证号" prop="sfzh">
                                         <el-input v-model="jbxx.sfzh3"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="居住地址" prop="lxrjzdz">
+                                        <el-input v-model="jbxx.lxrjzdz3"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="工作单位" prop="lxrgzdw">
+                                        <el-input v-model="jbxx.lxrgzdw3"></el-input>
                                     </el-form-item>
 
                                     <el-form-item label="联系人是否知道此贷款">
@@ -332,6 +359,7 @@
                                     <el-form-item label="和申请人关系">
                                         <el-select v-model="jbxx.gx4" placeholder="请选择">
                                             <el-option label="直系亲属" value="直系亲属"></el-option>
+                                            <el-option label="配偶" value="配偶"></el-option>
                                             <el-option label="朋友" value="朋友"></el-option>
                                             <el-option label="同事" value="同事"></el-option>
                                             <el-option label="其他" value="其他"></el-option>
@@ -344,6 +372,14 @@
 
                                     <el-form-item label="身份证号" prop="sfzh">
                                         <el-input v-model="jbxx.sfzh4"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="居住地址" prop="lxrjzdz">
+                                        <el-input v-model="jbxx.lxrjzdz4"></el-input>
+                                    </el-form-item>
+
+                                    <el-form-item label="工作单位" prop="lxrgzdw">
+                                        <el-input v-model="jbxx.lxrgzdw4"></el-input>
                                     </el-form-item>
 
                                     <el-form-item label="联系人是否知道此贷款">
@@ -610,21 +646,29 @@
     vm.jbxx.gx= '{{ urldecode($jbxx ->lxrxx -> gx) }}',
     vm.jbxx.lxdh= '{{ urldecode($jbxx ->lxrxx -> lxdh) }}',
     vm.jbxx.sfzh= '{{ urldecode($jbxx ->lxrxx -> sfzh) }}',
+    vm.jbxx.lxrjzdz= '{{ urldecode($jbxx ->lxrxx -> lxrjzdz) }}',
+    vm.jbxx.lxrgzdw= '{{ urldecode($jbxx ->lxrxx -> lxrgzdw) }}',
     vm.jbxx.dk= '{{ urldecode($jbxx ->lxrxx -> dk) }}',
     vm.jbxx.lxr2= '{{ urldecode($jbxx ->lxrxx -> lxr2) }}',
     vm.jbxx.gx2= '{{ urldecode($jbxx ->lxrxx -> gx2) }}',
     vm.jbxx.lxdh2= '{{ urldecode($jbxx ->lxrxx -> lxdh2) }}',
     vm.jbxx.sfzh2= '{{ urldecode($jbxx ->lxrxx -> sfzh2) }}',
+    vm.jbxx.lxrjzdz2 = '{{ urldecode($jbxx ->lxrxx -> lxrjzdz2) }}',
+    vm.jbxx.lxrgzdw2 = '{{ urldecode($jbxx ->lxrxx -> lxrgzdw2) }}',
     vm.jbxx.dk2= '{{ urldecode($jbxx ->lxrxx -> dk2) }}',
     vm.jbxx.lxr3= '{{ urldecode($jbxx ->lxrxx -> lxr3) }}',
     vm.jbxx.gx3= '{{ urldecode($jbxx ->lxrxx -> gx3) }}',
     vm.jbxx.lxdh3= '{{ urldecode($jbxx ->lxrxx -> lxdh3) }}',
     vm.jbxx.sfzh3= '{{ urldecode($jbxx ->lxrxx -> sfzh3) }}',
+    vm.jbxx.lxrjzdz3 = '{{ urldecode($jbxx ->lxrxx -> lxrjzdz3) }}',
+    vm.jbxx.lxrgzdw3 = '{{ urldecode($jbxx ->lxrxx -> lxrgzdw3) }}',
     vm.jbxx.dk3= '{{ urldecode($jbxx ->lxrxx -> dk3) }}',
     vm.jbxx.lxr4= '{{ urldecode($jbxx ->lxrxx -> lxr4) }}',
     vm.jbxx.gx4= '{{ urldecode($jbxx ->lxrxx -> gx4) }}',
     vm.jbxx.lxdh4= '{{ urldecode($jbxx ->lxrxx -> lxdh4) }}',
     vm.jbxx.sfzh4= '{{ urldecode($jbxx ->lxrxx -> sfzh4) }}',
+    vm.jbxx.lxrjzdz4 = '{{ urldecode($jbxx ->lxrxx -> lxrjzdz4) }}',
+    vm.jbxx.lxrgzdw4 = '{{ urldecode($jbxx ->lxrxx -> lxrgzdw4) }}',
     vm.jbxx.dk4= '{{ urldecode($jbxx ->lxrxx -> dk4) }}',
     vm.jbxx.fclb= '{{ urldecode($jbxx ->qtxx -> fclb) }}',
     vm.jbxx.gmsj= '{{ urldecode($jbxx ->qtxx -> gmsj) }}',
