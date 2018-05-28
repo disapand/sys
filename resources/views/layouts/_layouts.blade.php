@@ -339,9 +339,18 @@
                 vm.activeStep = 5
                 $('#jbxxSubmit').removeAttr('disabled').removeClass('is-disabled')
                 vm.jbxx.fjxx.push(response.dd)
+                vm.$message({
+                    showClose: true,
+                    type: 'success',
+                    message: '图片上传成功'
+                })
             },
             imgUploadError(response, file, fileList) {
-                vm.$message(response)
+                vm.$message({
+                    showClose: true,
+                    type: 'error',
+                    message: '图片上传失败:' + response
+                })
                 console.log('图片上传失败' + response)
                 console.log('图片上传失败' + file)
                 console.log('图片上传失败' + fileList)
