@@ -332,6 +332,7 @@
             //上传图片的方法
             uploadSubmit() {
                 vm.$refs.img.submit()
+                console.log('图片上传')
             },
             //图片上传成功的回调方法
             imgUploadSuccess(response, file, fileList) {
@@ -339,11 +340,11 @@
                 $('#jbxxSubmit').removeAttr('disabled').removeClass('is-disabled')
                 vm.jbxx.fjxx.push(response.dd)
             },
-            uploadSubmit() {
-                vm.$refs.img.submit()
-            },
             imgUploadError(response, file, fileList) {
                 vm.$message(response)
+                console.log('图片上传失败' + response)
+                console.log('图片上传失败' + file)
+                console.log('图片上传失败' + fileList)
             },
             //修改对应行的颜色
             tableRowClassName({row, rowIndex}) {
