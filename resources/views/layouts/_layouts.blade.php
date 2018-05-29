@@ -286,8 +286,8 @@
                                 message: msg.dd,
                                 type: msg.statue
                             })
-                            // window.location.reload()
-                            history.back(-1)
+                            window.location.reload()
+                            // history.back(-1)
                         })
                     }).catch(() => {
                         vm.$message({

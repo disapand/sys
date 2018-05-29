@@ -28,6 +28,7 @@ Route::post('/jkrCreate', 'jkrController@jbxxStore') -> name('jbxxCreate');
 Route::get('/jkrlist', 'jkrController@list') -> name('jkrList');
 Route::get('/jkrShow/{jbxx}', 'jkrController@show') -> name('jkrShow');
 Route::post('/jkrUpdate/{jbxx}', 'jkrController@update') -> name('jbxxUpdate');
+Route::post('/jkrDelete/{jbxx}', 'jkrController@delete') -> name('jbxxDelete');
 Route::get('/jkrQuery/{condition?}/queryString/{queryString?}', 'jkrController@query') -> name('jkrQuery');
 Route::post('/jkrSh/{shyj?}/jbxx/{jbxx}/sort/{sort?}/zt/{zt?}', 'jkrController@sh') -> name('jkrSh');
 

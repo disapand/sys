@@ -315,4 +315,13 @@ class jkrController extends Controller
         }
     }
 
+    public function delete(jbxx $jbxx) {
+        $jbxx->delete();
+        lxrxx::where('jbxx_id', $jbxx->id)->delete();
+        zyxx::where('jbxx_id', $jbxx->id)->delete();
+        qtxx::where('jbxx_id', $jbxx->id)->delete();
+        fjxx::where('jbxx_id', $jbxx->id)->delete();
+        return response()->json(['statue' => 'success', 'dd' => '删除成功']);
+    }
+
 }

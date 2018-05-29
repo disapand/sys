@@ -110,6 +110,13 @@
                                 type="primary"
                                 @click="onSubmit('{{ url('/jkrShow') }}', scope.row.id, 'show')">详情
                         </el-button>
+                        @if(\Illuminate\Support\Facades\Auth::user()->role == "管理员")
+                            <el-button
+                                    size="mini"
+                                    type="danger"
+                                    @click="onSubmit('{{ url('/jkrDelete') }}', scope.row.id, 'del')">删除
+                            </el-button>
+                        @endif
                     </template>
                 </el-table-column>
             </el-table>
