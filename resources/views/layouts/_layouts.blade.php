@@ -253,7 +253,7 @@
                                 type: msg.statue
                             })
                             vm.$refs[tmp].resetFields()
-                            window.location.href = document.referrer
+                            // window.location.href = document.referrer
                             {{--if (tmp == 'jbxx') {--}}
                                 {{--window.location.href({{ route('jkrList') }})--}}
                             {{--}--}}
