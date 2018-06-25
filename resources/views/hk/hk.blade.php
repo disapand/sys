@@ -41,6 +41,11 @@
                                         type="primary"
                                         @click="onSubmit(' {{ url('/hkEdit') }}', scope.row.id, 'show')">编辑还款信息
                                 </el-button>
+                                <el-button
+                                        size="mini"
+                                        type="primary"
+                                        @click="onSubmit(' {{ url('/hkDelete') }}', scope.row.id, 'del')">删除
+                                </el-button>
                             </template>
                         </el-table-column>
                     @endif

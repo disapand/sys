@@ -44,6 +44,7 @@ Route::post('/hkCreate/{jk}', 'hkController@create') -> name('hkCreate');
 Route::get('/hkShow', 'hkController@show') -> name('hkShow');
 Route::get('/hkEdit/{hk}', 'hkController@edit') -> name('hkEdit');
 Route::post('/hkUpdate/{hk}', 'hkController@update') -> name('hkUpdate');
+Route::post('/hkDelete/{hk}', 'hkController@delete') -> name('hkDelete');
 Route::get('/hkQuery/{condition?}/queryString/{queryString?}', 'hkController@query') -> name('hkQuery');
 
 Route::get('/dashboard', 'indexController@dashboard')->name('dashboard');

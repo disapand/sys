@@ -247,6 +247,7 @@
                     if (valid) {
                         $.post(uri, data, function (msg, textStatus, jqXHR) {
                             console.log(msg)
+                            console.log(textStatus)
                             vm.$message({
                                 showClose: true,
                                 message: msg.dd,

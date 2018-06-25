@@ -68,6 +68,11 @@ class hkController extends Controller
         return response() -> json(['statue' => 'success', 'dd' => '还款信息更新成功']);
     }
 
+    public function delete(hk $hk) {
+        $hk -> delete();
+        return response()->json(['statue' => 'success', 'dd' => '删除成功']);
+    }
+
     public function query($condition = '', $queryString = '') {
         if ($queryString == '') {
             return redirect()->route('hkShow');
