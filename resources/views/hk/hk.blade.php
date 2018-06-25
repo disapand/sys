@@ -43,7 +43,7 @@
                                 </el-button>
                                 <el-button
                                         size="mini"
-                                        type="primary"
+                                        type="danger"
                                         @click="onSubmit(' {{ url('/hkDelete') }}', scope.row.id, 'del')">删除
                                 </el-button>
                             </template>
